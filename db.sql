@@ -94,6 +94,27 @@ insert into customer_vehicles values('MH09OT0808',4,3);
 insert into customer_vehicles values('MH11AD7878',3,5);
 
 
+CREATE TABLE parts(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(50),
+	description VARCHAR(100),
+	price DECIMAL(10,2)
+);
+
+insert into parts values(1,'clutch','The clutch is a part of the transmission system next to the crankshaft',1000);
+
+insert into parts values(2,'battery','The car battery is also an essential component of car as it provides the electricity to car',4600);
+
+insert into parts values(3,'alternator','It provides energy the electrical components such as power steering systems,power windows',3000);
+
+insert into parts values(4,'radiator','important part of the car engine’s cooling system,helps to drain out the excess heat from the engine',4000);
+
+insert into parts values(5,'propeller shaft','The power is transferred to the wheels using the propeller shaft. It is also called a driveshaft.',5000);
+
+insert into parts values(6,'axles','It is nothing but shafts,used to mount the wheels,two types namely, Front Axle and Rear Axle',8000);
+
+insert into parts values(7,'timing belt','keep the engine intake and exhaust valves open and close simultaneously in time with the pistons',8000);
+
 
 
 
