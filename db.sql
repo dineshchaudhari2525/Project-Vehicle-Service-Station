@@ -124,6 +124,36 @@ CREATE TABLE service_requests(
 	foreign key (vehicle_number) REFERENCES customer_vehicles(vehicle_number) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+CREATE TABLE payments(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	service_request_id INT,
+	tx_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	paid_amount DECIMAL(8,2),
+	foreign key (service_request_id) REFERENCES 
+	service_requests(id) ON UPDATE CASCADE ON DELETE CASCADE 
+);
+
+CREATE TABLE services(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	type ENUM ('oil','maintainance'),
+	oil_cost DECIMAL(6,2),
+	labour_charges DECIMAL(6,2),
+	total_cost DECIMAL(7,2),
+	remark VARCHAR(100),
+	service_request_id INT,
+	foreign key (service_request_id) REFERENCES
+	service_requests(id) ON UPDATE CASCADE ON DELETE CASCADE 
+);
+
+CREATE TABLE service_parts(
+	service_id INT,
+	part_id INT,
+	quantity INT,
+	foreign key (service_id) REFERENCES services(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	foreign key (part_id) REFERENCES parts(id) ON UPDATE CASCADE ON DELETE CASCADE	
+);
+
+
 
 
 
