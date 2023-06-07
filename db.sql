@@ -116,6 +116,14 @@ insert into parts values(6,'axles','It is nothing but shafts,used to mount the w
 insert into parts values(7,'timing belt','keep the engine intake and exhaust valves open and close simultaneously in time with the pistons',8000);
 
 
+CREATE TABLE service_requests(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	vehicle_number VARCHAR(10),
+	request_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	bill_amount DECIMAL(10,2),
+	foreign key (vehicle_number) REFERENCES customer_vehicles(vehicle_number) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 
 
 
