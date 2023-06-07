@@ -32,6 +32,33 @@ insert into customer values(9,'Pooja','8759068778','pooja@gmail.com','Nagpur');
 
 insert into customer values(10,'Nilesh','9876543210','nilesh@gmail.com','Kolhapur');
 
+CREATE TABLE vehicle(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    company VARCHAR(30),
+    model VARCHAR(30)
+);
+
+insert into vehicle values(1,'Honda','cb-unicorn');
+
+insert into vehicle values(2,'Hero','splender');
+
+insert into vehicle values(3,'Honda','activa');
+
+insert into vehicle values(4,'Honda','shine125');
+
+insert into vehicle values(5,'Yamaha','FZ160');
+
+insert into vehicle values(6,'Hero','karizma');
+
+insert into vehicle values(7,'Honda','Hornet');
+
+insert into vehicle values(8,'TVS','jupiter');
+
+insert into vehicle values(9,'TVS','apache160');
+
+insert into vehicle values(10,'Bajaj','pulsar');
+
+
 
 
 
