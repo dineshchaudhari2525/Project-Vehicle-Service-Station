@@ -5,7 +5,9 @@ import java.util.Scanner;
 enum ECustomerMenu{
 	BACK,ADD_CUSTOMER,DISPLAY_ALL_CUSTOMER,DISPLAY_SPECIFIC_CUSTOMER,EDIT_CUSTOMER,DELETE_CUSTOMER
 }
-
+enum EVehicleMenu{
+	BACK,ADD_VEHICLE,DISPLAY_ALL_VEHICLE,DISPLAY_SPECIFIC_VEHICLE,EDIT_VEHICLE,DELETE_VEHICLE
+}
 public class SubMenu {
 	
 	public static ECustomerMenu customerMenu() {
@@ -48,7 +50,7 @@ public class SubMenu {
 			}
 		}
 	}
-	   public static int vehicleMenu() {
+	   public static EVehicleMenu vehicleMenu() {
 			System.out.println("0.Back");
 			System.out.println("1.Add Vehicle");
 			System.out.println("2.Display All Vehicle");
@@ -56,25 +58,30 @@ public class SubMenu {
 			System.out.println("4.Edit Vehicle");
 			System.out.println("5.Delete Vehicle");
 			System.out.println("Enter Choice: ");
-			return new Scanner(System.in).nextInt();
+			int choice = new Scanner(System.in).nextInt();
+			if(choice < 0 || choice >7)
+				return EVehicleMenu.values()[7];
+			else 
+				return EVehicleMenu.values()[choice];
 			}
+
 		   public static void vehicleMain() {
-			int choice;
-			while((choice=vehicleMenu())!=0) {
+			   EVehicleMenu choice;
+			while((choice=vehicleMenu())!=EVehicleMenu.BACK) {
 				switch (choice) {
-				case 1:
+				case ADD_VEHICLE:
 					System.out.println("Add Vehicle");
 					break;
-				case 2:
+				case DISPLAY_ALL_VEHICLE:
 					System.out.println("Display All Vehicle");
 					break;
-				case 3:
+				case DISPLAY_SPECIFIC_VEHICLE:
 					System.out.println("Display Specific Vehicle Details");
 					break;
-				case 4:
+				case EDIT_VEHICLE:
 					System.out.println("Edit Vehicle");
 					break;
-				case 5:
+				case DELETE_VEHICLE:
 					System.out.println("Delete Vehicle");
 					break;
 
