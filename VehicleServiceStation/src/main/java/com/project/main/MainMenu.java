@@ -2,9 +2,15 @@ package com.project.main;
 
 import java.util.Scanner;
 
+
+enum EmainMenu{
+	EXIT,CUSTOMER,VEHICLE,SERVICE,PARTS,TODAYS_BUSINESS,GIVEN_DATE_BUSINESS
+}
+
 public class MainMenu {
+
 	
-	public static int mainMenuOptions() {
+	public static EmainMenu mainMenuOptions() {
 		System.out.println("0.Exit");
 		System.out.println("1.Customer");
 		System.out.println("2.Vehicle");
@@ -13,28 +19,29 @@ public class MainMenu {
 		System.out.println("5.Today's Business");
 		System.out.println("6.Given Date's Business");
 		System.out.println("Enter your Choice: ");
-		return new Scanner(System.in).nextInt();
+		int choice =new Scanner(System.in).nextInt();
+		return EmainMenu.values()[choice];
 	}
 	public static void main(String[] args) {
-		int choice;
-		while((choice=mainMenuOptions())!=0) {
+		EmainMenu choice;
+		while((choice=mainMenuOptions())!=EmainMenu.EXIT) {
 			switch (choice) {
-			case 1:
+			case CUSTOMER:
 				SubMenu.customerMain();
 				break;
-			case 2:
+			case VEHICLE:
 				SubMenu.vehicleMain();
 				break;
-			case 3:
+			case SERVICE:
 				SubMenu.serviceMain();
 				break;
-			case 4:
+			case PARTS:
 				SubMenu.partsMain();
 				break;
-			case 5:
+			case TODAYS_BUSINESS:
 				SubMenu.todaysBusinessMain();
 				break;
-			case 6:
+			case GIVEN_DATE_BUSINESS:
 				SubMenu.givenDateBusinessMain();
 				break;
 				
