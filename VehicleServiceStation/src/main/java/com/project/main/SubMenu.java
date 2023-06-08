@@ -14,6 +14,9 @@ enum EServiceMenu{
 enum EProcessRequestMenu{
 	BACK,NEW_SERVICES,EXISTING_SERVICE,MAINTENANCE,REPAIRING,OIL_ADDITIVE_CHANGE,
 }
+enum EPartsMenu{
+	BACK,ADD_PART,DISPLAY_ALL_PARTS,EDIT_PART_PRICE,DELETE_PART
+}
 public class SubMenu {
 	
 	public static ECustomerMenu customerMenu() {
@@ -176,29 +179,33 @@ public class SubMenu {
 						}
 					}
 				}
-			   public static int partsMenu() {
+			   public static EPartsMenu partsMenu() {
 					System.out.println("0.Back");
 					System.out.println("1.Add Part");
 					System.out.println("2.Display All Parts");
 					System.out.println("3.Edit Part Price");
 					System.out.println("4.Delete Part ");
 					System.out.println("Enter Choice: ");
-					return new Scanner(System.in).nextInt();
-					}
+					int choice=new Scanner(System.in).nextInt();
+					if(choice < 0 || choice > 6)
+						return EPartsMenu.values()[6];
+					else 
+						return EPartsMenu.values()[choice];
+			   }
 				   public static void partsMain() {
-					int choice;
-					while((choice=partsMenu())!=0) {
+					   EPartsMenu choice;
+					while((choice=partsMenu())!=EPartsMenu.BACK) {
 						switch (choice) {
-						case 1:
+						case ADD_PART:
 							System.out.println("Add Part");
 							break;
-						case 2:
+						case DISPLAY_ALL_PARTS:
 							System.out.println("Display All Parts");
 							break;
-						case 3:
+						case EDIT_PART_PRICE:
 							System.out.println("Edit Part Price");
 							break;
-						case 4:
+						case DELETE_PART:
 							System.out.println("Delete Part");
 							break;
 
