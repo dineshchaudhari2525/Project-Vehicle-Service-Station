@@ -2,9 +2,13 @@ package com.project.main;
 
 import java.util.Scanner;
 
+enum ECustomerMenu{
+	BACK,ADD_CUSTOMER,DISPLAY_ALL_CUSTOMER,DISPLAY_SPECIFIC_CUSTOMER,EDIT_CUSTOMER,DELETE_CUSTOMER
+}
+
 public class SubMenu {
 	
-	public static int customerMenu() {
+	public static ECustomerMenu customerMenu() {
 		System.out.println("0.Back");
 		System.out.println("1.Add Customer");
 		System.out.println("2.Display All Customer");
@@ -12,25 +16,29 @@ public class SubMenu {
 		System.out.println("4.Edit Customer");
 		System.out.println("5.Delete Customer");
 		System.out.println("Enter Choice: ");
-		return new Scanner(System.in).nextInt();
+		int choice = new Scanner(System.in).nextInt();
+		if(choice < 0 || choice >7)
+			return ECustomerMenu.values()[7];
+		else 
+			return ECustomerMenu.values()[choice];
 		}
 	   public static void customerMain() {
-		int choice;
-		while((choice=customerMenu())!=0) {
+		   ECustomerMenu choice;
+		while((choice=customerMenu())!=ECustomerMenu.BACK) {
 			switch (choice) {
-			case 1:
+			case ADD_CUSTOMER:
 				System.out.println("1.Add Customer");
 				break;
-			case 2:
+			case DISPLAY_ALL_CUSTOMER:
 				System.out.println("2.Display All Customer");
 				break;
-			case 3:
+			case DISPLAY_SPECIFIC_CUSTOMER:
 				System.out.println("3.Display Specific Customer Details");
 				break;
-			case 4:
+			case EDIT_CUSTOMER:
 				System.out.println("4.Edit Customer");
 				break;
-			case 5:
+			case DELETE_CUSTOMER:
 				System.out.println("5.Delete Customer");
 				break;
 
