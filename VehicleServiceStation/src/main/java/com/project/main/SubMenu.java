@@ -20,6 +20,16 @@ enum ENewService{
 enum EExistingService{
 	BACK,SELECT_EXISTING_SERVICE,DEFAULT
 }
+enum EMaintenanceRequirement{
+	BACK,MAINTENANCE_REQUIREMENT,DEFAULT
+}
+enum ERepairingRequirement{
+	BACK,REPAIRING_REQUIREMENT,DEFAULT
+}
+enum EOilAddRequirement{
+	BACK,OIL_ADD,DEFAULT
+}
+
 enum EPartsMenu{
 	BACK,ADD_PART,DISPLAY_ALL_PARTS,EDIT_PART_PRICE,DELETE_PART,DEFAULT
 }
@@ -34,7 +44,7 @@ public class SubMenu {
 		System.out.println("5.Delete Customer");
 		System.out.println("Enter Choice: ");
 		int choice = new Scanner(System.in).nextInt();
-		if(choice < 0 || choice >6)
+		if(choice < 0 || choice >5)
 			return ECustomerMenu.values()[6];
 		else 
 			return ECustomerMenu.values()[choice];
@@ -74,7 +84,7 @@ public class SubMenu {
 			System.out.println("5.Delete Vehicle");
 			System.out.println("Enter Choice: ");
 			int choice = new Scanner(System.in).nextInt();
-			if(choice < 0 || choice >6)
+			if(choice < 0 || choice >5)
 				return EVehicleMenu.values()[6];
 			else 
 				return EVehicleMenu.values()[choice];
@@ -115,7 +125,7 @@ public class SubMenu {
 				System.out.println("4.Get Payment Form Customer");
 				System.out.println("Enter Choice: ");
 				int choice= new Scanner(System.in).nextInt();
-				if(choice < 0 || choice >5)
+				if(choice < 0 || choice >4)
 					return EServiceMenu.values()[5];
 				else
 					return EServiceMenu.values()[choice];
@@ -153,7 +163,7 @@ public class SubMenu {
 					System.out.println("5.Oil/Additive Change/Add ");
 					System.out.println("Enter Choice: ");
 					int choice= new Scanner(System.in).nextInt();
-					if(choice < 0 || choice >6)
+					if(choice < 0 || choice >5)
 						return EProcessRequestMenu.values()[6];
 					else 
 						return EProcessRequestMenu.values()[choice];
@@ -170,13 +180,13 @@ public class SubMenu {
 							SubMenu.existingServiceMain();
 							break;
 						case MAINTENANCE:
-							System.out.println("Maintenance");
+							SubMenu.maintenanceRequirementMain();
 							break;
 						case REPAIRING:
-							System.out.println("Repairing");
+							SubMenu.repairingRequirementMain();
 							break;
 						case OIL_ADDITIVE_CHANGE:
-							System.out.println("Oil/Additive Change/Add");
+							SubMenu.oilAddRquirementMain();
 							break;
 
 						default:
@@ -185,34 +195,12 @@ public class SubMenu {
 						}
 					}
 				}
-			   public static  EExistingService existingServiceMenu() {
-				   System.out.println("0.BACK");
-				   System.out.println("1.Select Existing Service");
-				   int choice=new Scanner(System.in).nextInt();
-				   if (choice < 0 || choice >2)
-					   return EExistingService.values()[2];
-				   else 
-					   return EExistingService.values()[choice];
-			   }
-                   public static void existingServiceMain() {
-                	   EExistingService choice;
-                	   while((choice=existingServiceMenu())!=EExistingService.BACK) {
-                		   switch (choice) {
-						case SELECT_EXISTING_SERVICE:
-							System.out.println("Existing Service");
-							break;
-
-						default:
-							System.out.println("Wrong Choice");
-							break;
-						}
-                	   }
-                   }
+			 
                    public static  ENewService newServiceMenu() {
     				   System.out.println("0.BACK");
     				   System.out.println("1.Creating new Servicess");
     				   int choice=new Scanner(System.in).nextInt();
-    				   if (choice < 0 || choice >2)
+    				   if (choice < 0 || choice >1)
     					   return ENewService.values()[2];
     				   else 
     					   return ENewService.values()[choice];
@@ -232,6 +220,109 @@ public class SubMenu {
                     	   }
                        }
     			   
+                       
+                       public static  EExistingService existingServiceMenu() {
+        				   System.out.println("0.BACK");
+        				   System.out.println("1.Select Existing Service");
+        				   int choice=new Scanner(System.in).nextInt();
+        				   if (choice < 0 || choice >1)
+        					   return EExistingService.values()[2];
+        				   else 
+        					   return EExistingService.values()[choice];
+        			   }
+                           public static void existingServiceMain() {
+                        	   EExistingService choice;
+                        	   while((choice=existingServiceMenu())!=EExistingService.BACK) {
+                        		   switch (choice) {
+        						case SELECT_EXISTING_SERVICE:
+        							System.out.println("Existing Service");
+        							break;
+
+        						default:
+        							System.out.println("Wrong Choice");
+        							break;
+        						}
+                        	   }
+                           }
+                           
+                           
+                           public static  EMaintenanceRequirement maintenanceRequirementMenu() {
+                        	  
+            				   System.out.println("0.BACK");
+            				   System.out.println("1.maintenance required");
+            				   int choice=new Scanner(System.in).nextInt();
+            				   if (choice < 0 || choice >1)
+            					   return EMaintenanceRequirement.values()[2];
+            				   else 
+            					   return EMaintenanceRequirement.values()[choice];
+            			   }
+                               public static void maintenanceRequirementMain() {
+                            	
+                            	   EMaintenanceRequirement choice;
+                            	   while((choice=maintenanceRequirementMenu())!=EMaintenanceRequirement.BACK) {
+                            		
+                            		   switch (choice) {
+            						case MAINTENANCE_REQUIREMENT:
+            							System.out.println("maintenance required");
+            							break;
+
+            						default:
+            							System.out.println("Wrong Choice");
+            							break;
+            						}
+                            	   }
+                               }
+                       
+                               
+                               public static  ERepairingRequirement repairingRequirementMenu() {
+                				   System.out.println("0.BACK");
+                				   System.out.println("1.Repairing Requirement	");
+                				   int choice=new Scanner(System.in).nextInt();
+                				   if (choice < 0 || choice >1)
+                					   return ERepairingRequirement.values()[2];
+                				   else 
+                					   return ERepairingRequirement.values()[choice];
+                			   }
+                                   public static void repairingRequirementMain() {
+                                	   ERepairingRequirement choice;
+                                	   while((choice=repairingRequirementMenu())!=ERepairingRequirement.BACK) {
+                                		   switch (choice) {
+                						case REPAIRING_REQUIREMENT:
+                							System.out.println("Repairing Requirement");
+                							break;
+
+                						default:
+                							System.out.println("Wrong Choice");
+                							break;
+                						}
+                                	   }
+                                   }
+                                   
+                                   public static  EOilAddRequirement oilAddRquirementMenu() {
+                    				   System.out.println("0.BACK");
+                    				   System.out.println("1.Repairing Requirement	");
+                    				   int choice=new Scanner(System.in).nextInt();
+                    				   if (choice < 0 || choice >1)
+                    					   return EOilAddRequirement.values()[2];
+                    				   else 
+                    					   return EOilAddRequirement.values()[choice];
+                    			   }
+                                       public static void oilAddRquirementMain() {
+                                    	   EOilAddRequirement choice;
+                                    	   while((choice=oilAddRquirementMenu())!=EOilAddRequirement.BACK) {
+                                    		   switch (choice) {
+                    						case OIL_ADD:
+                    							System.out.println("Oil/Additive Change/Add Requirement");
+                    							break;
+
+                    						default:
+                    							System.out.println("Wrong Choice");
+                    							break;
+                    						}
+                                    	   }
+                                       }
+                               
+                               
 			   public static EPartsMenu partsMenu() {
 					System.out.println("0.Back");
 					System.out.println("1.Add Part");
@@ -240,7 +331,7 @@ public class SubMenu {
 					System.out.println("4.Delete Part ");
 					System.out.println("Enter Choice: ");
 					int choice=new Scanner(System.in).nextInt();
-					if(choice < 0 || choice > 5)
+					if(choice < 0 || choice > 4)
 						return EPartsMenu.values()[5];
 					else 
 						return EPartsMenu.values()[choice];
