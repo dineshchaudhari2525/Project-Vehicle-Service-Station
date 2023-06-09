@@ -3,7 +3,7 @@ package com.project.entity;
 public class Customer {
 	private int id;
 	private String name;
-	private Double mobile;
+	private String mobile;
 	private String email;
 	private String address;
 
@@ -11,7 +11,7 @@ public class Customer {
 		
 	}
 
-	public Customer(int id, String name, Double mobile, String email, String address) {
+	public Customer(int id, String name, String mobile, String email, String address) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -36,11 +36,11 @@ public class Customer {
 		this.name = name;
 	}
 
-	public Double getMobile() {
+	public String getMobile() {
 		return mobile;
 	}
 
-	public void setMobile(Double mobile) {
+	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 
