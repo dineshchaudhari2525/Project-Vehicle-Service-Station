@@ -17,6 +17,9 @@ enum EProcessRequestMenu{
 enum ENewService{
 	BACK,CREATE_NEW_SERVICE,DEFAULT
 }
+enum EExistingService{
+	BACK,SELECT_EXISTING_SERVICE,DEFAULT
+}
 enum EPartsMenu{
 	BACK,ADD_PART,DISPLAY_ALL_PARTS,EDIT_PART_PRICE,DELETE_PART,DEFAULT
 }
@@ -164,7 +167,7 @@ public class SubMenu {
 							SubMenu.newServiceMain();
 							break;
 						case EXISTING_SERVICE:
-							System.out.println("Existing Service");
+							SubMenu.existingServiceMain();
 							break;
 						case MAINTENANCE:
 							System.out.println("Maintenance");
@@ -182,21 +185,21 @@ public class SubMenu {
 						}
 					}
 				}
-			   public static  ENewService newServiceMenu() {
+			   public static  EExistingService existingServiceMenu() {
 				   System.out.println("0.BACK");
-				   System.out.println("1.Create new Vehicle");
+				   System.out.println("1.Select Existing Service");
 				   int choice=new Scanner(System.in).nextInt();
 				   if (choice < 0 || choice >2)
-					   return ENewService.values()[2];
+					   return EExistingService.values()[2];
 				   else 
-					   return ENewService.values()[choice];
+					   return EExistingService.values()[choice];
 			   }
-                   public static void newServiceMain() {
-                	   ENewService choice;
-                	   while((choice=newServiceMenu())!=ENewService.BACK) {
+                   public static void existingServiceMain() {
+                	   EExistingService choice;
+                	   while((choice=existingServiceMenu())!=EExistingService.BACK) {
                 		   switch (choice) {
-						case CREATE_NEW_SERVICE:
-							System.out.println("Creating new Services");
+						case SELECT_EXISTING_SERVICE:
+							System.out.println("Existing Service");
 							break;
 
 						default:
@@ -205,7 +208,30 @@ public class SubMenu {
 						}
                 	   }
                    }
-			   
+                   public static  ENewService newServiceMenu() {
+    				   System.out.println("0.BACK");
+    				   System.out.println("1.Creating new Servicess");
+    				   int choice=new Scanner(System.in).nextInt();
+    				   if (choice < 0 || choice >2)
+    					   return ENewService.values()[2];
+    				   else 
+    					   return ENewService.values()[choice];
+    			   }
+                       public static void newServiceMain() {
+                    	   ENewService choice;
+                    	   while((choice=newServiceMenu())!=ENewService.BACK) {
+                    		   switch (choice) {
+    						case CREATE_NEW_SERVICE:
+    							System.out.println("Creating new Services");
+    							break;
+
+    						default:
+    							System.out.println("Wrong Choice");
+    							break;
+    						}
+                    	   }
+                       }
+    			   
 			   public static EPartsMenu partsMenu() {
 					System.out.println("0.Back");
 					System.out.println("1.Add Part");
