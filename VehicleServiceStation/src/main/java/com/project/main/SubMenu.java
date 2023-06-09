@@ -3,19 +3,22 @@ package com.project.main;
 import java.util.Scanner;
 
 enum ECustomerMenu{
-	BACK,ADD_CUSTOMER,DISPLAY_ALL_CUSTOMER,DISPLAY_SPECIFIC_CUSTOMER,EDIT_CUSTOMER,DELETE_CUSTOMER
+	BACK,ADD_CUSTOMER,DISPLAY_ALL_CUSTOMER,DISPLAY_SPECIFIC_CUSTOMER,EDIT_CUSTOMER,DELETE_CUSTOMER,DEFAULT
 }
 enum EVehicleMenu{
-	BACK,ADD_VEHICLE,DISPLAY_ALL_VEHICLE,DISPLAY_SPECIFIC_VEHICLE,EDIT_VEHICLE,DELETE_VEHICLE
+	BACK,ADD_VEHICLE,DISPLAY_ALL_VEHICLE,DISPLAY_SPECIFIC_VEHICLE,EDIT_VEHICLE,DELETE_VEHICLE,DEFAULT
 }
 enum EServiceMenu{
-	BACK,SELECT_CUSTOMER_VEHICLE,PROCESS_REQUEST,PREPARE_AND_DISPLAY_BILL,GET_PAYMENT_FORM_CUSTOMER
+	BACK,SELECT_CUSTOMER_VEHICLE,PROCESS_REQUEST,PREPARE_AND_DISPLAY_BILL,GET_PAYMENT_FORM_CUSTOMER,DEFAULT
 }
 enum EProcessRequestMenu{
-	BACK,NEW_SERVICES,EXISTING_SERVICE,MAINTENANCE,REPAIRING,OIL_ADDITIVE_CHANGE,
+	BACK,NEW_SERVICE,EXISTING_SERVICE,MAINTENANCE,REPAIRING,OIL_ADDITIVE_CHANGE,DEFAULT
+}
+enum ENewService{
+	BACK,CREATE_NEW_SERVICE,DEFAULT
 }
 enum EPartsMenu{
-	BACK,ADD_PART,DISPLAY_ALL_PARTS,EDIT_PART_PRICE,DELETE_PART
+	BACK,ADD_PART,DISPLAY_ALL_PARTS,EDIT_PART_PRICE,DELETE_PART,DEFAULT
 }
 public class SubMenu {
 	
@@ -28,8 +31,8 @@ public class SubMenu {
 		System.out.println("5.Delete Customer");
 		System.out.println("Enter Choice: ");
 		int choice = new Scanner(System.in).nextInt();
-		if(choice < 0 || choice >7)
-			return ECustomerMenu.values()[7];
+		if(choice < 0 || choice >6)
+			return ECustomerMenu.values()[6];
 		else 
 			return ECustomerMenu.values()[choice];
 		}
@@ -68,8 +71,8 @@ public class SubMenu {
 			System.out.println("5.Delete Vehicle");
 			System.out.println("Enter Choice: ");
 			int choice = new Scanner(System.in).nextInt();
-			if(choice < 0 || choice >7)
-				return EVehicleMenu.values()[7];
+			if(choice < 0 || choice >6)
+				return EVehicleMenu.values()[6];
 			else 
 				return EVehicleMenu.values()[choice];
 			}
@@ -109,8 +112,8 @@ public class SubMenu {
 				System.out.println("4.Get Payment Form Customer");
 				System.out.println("Enter Choice: ");
 				int choice= new Scanner(System.in).nextInt();
-				if(choice < 0 || choice >6)
-					return EServiceMenu.values()[6];
+				if(choice < 0 || choice >5)
+					return EServiceMenu.values()[5];
 				else
 					return EServiceMenu.values()[choice];
 				}
@@ -147,8 +150,8 @@ public class SubMenu {
 					System.out.println("5.Oil/Additive Change/Add ");
 					System.out.println("Enter Choice: ");
 					int choice= new Scanner(System.in).nextInt();
-					if(choice < 0 || choice >7)
-						return EProcessRequestMenu.values()[7];
+					if(choice < 0 || choice >6)
+						return EProcessRequestMenu.values()[6];
 					else 
 						return EProcessRequestMenu.values()[choice];
 					}
@@ -157,8 +160,8 @@ public class SubMenu {
 					   EProcessRequestMenu choice;
 					while((choice=processRequestMenu())!=EProcessRequestMenu.BACK) {
 						switch (choice) {
-						case NEW_SERVICES:
-							System.out.println("New Services");
+						case NEW_SERVICE:
+							SubMenu.newServiceMain();
 							break;
 						case EXISTING_SERVICE:
 							System.out.println("Existing Service");
@@ -179,6 +182,30 @@ public class SubMenu {
 						}
 					}
 				}
+			   public static  ENewService newServiceMenu() {
+				   System.out.println("0.BACK");
+				   System.out.println("1.Create new Vehicle");
+				   int choice=new Scanner(System.in).nextInt();
+				   if (choice < 0 || choice >2)
+					   return ENewService.values()[2];
+				   else 
+					   return ENewService.values()[choice];
+			   }
+                   public static void newServiceMain() {
+                	   ENewService choice;
+                	   while((choice=newServiceMenu())!=ENewService.BACK) {
+                		   switch (choice) {
+						case CREATE_NEW_SERVICE:
+							System.out.println("Creating new Services");
+							break;
+
+						default:
+							System.out.println("Wrong Choice");
+							break;
+						}
+                	   }
+                   }
+			   
 			   public static EPartsMenu partsMenu() {
 					System.out.println("0.Back");
 					System.out.println("1.Add Part");
@@ -187,8 +214,8 @@ public class SubMenu {
 					System.out.println("4.Delete Part ");
 					System.out.println("Enter Choice: ");
 					int choice=new Scanner(System.in).nextInt();
-					if(choice < 0 || choice > 6)
-						return EPartsMenu.values()[6];
+					if(choice < 0 || choice > 5)
+						return EPartsMenu.values()[5];
 					else 
 						return EPartsMenu.values()[choice];
 			   }
