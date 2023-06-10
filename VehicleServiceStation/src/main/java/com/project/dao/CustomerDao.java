@@ -9,7 +9,7 @@ import java.util.List;
 import com.project.entity.Customer;
 import com.project.util.DBUtil;
 
-public class CustomerDao {
+public class CustomerDao implements AutoCloseable {
 	private Connection connection;
 	
 	public CustomerDao() throws SQLException {
@@ -25,6 +25,21 @@ public class CustomerDao {
 				customerList.add(customer);
 			}
 		}
+	}
+	@Override
+	public void close() throws SQLException {
+		this.connection.close();
+		
+	}
+	public int addCustomer(Customer customer) throws SQLException {
+		String sql="INSERT INTO vehicle(id,name,mobile,email,adddress)VALUES(?,?,?,?,?)";
+		PreparedStatement pst=this.connection.prepareStatement(sql);
+		pst.setInt(1, customer.getId());
+		pst.setString(2, customer.getName());
+		pst.setString(3, customer.getMobile());
+		pst.setString(4, customer.getEmail());
+		pst.setString(5, customer.getAddress());
+		return 0;
 	}
 
 }

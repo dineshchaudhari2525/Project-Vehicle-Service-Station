@@ -1,6 +1,13 @@
 package com.project.main;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import com.project.dao.CustomerDao;
+import com.project.entity.Customer;
+import com.project.service.CustomerService;
 
 enum ECustomerMenu {
 	BACK, ADD_CUSTOMER, DISPLAY_ALL_CUSTOMER, DISPLAY_SPECIFIC_CUSTOMER, EDIT_CUSTOMER, DELETE_CUSTOMER, DEFAULT
@@ -65,9 +72,13 @@ public class SubMenu {
 			switch (choice) {
 			case ADD_CUSTOMER:
 				System.out.println("1.Add Customer");
+				CustomerService.addCustomer();
+			
 				break;
 			case DISPLAY_ALL_CUSTOMER:
 				System.out.println("2.Display All Customer");
+				CustomerService.getAllCustomer();
+				
 				break;
 			case DISPLAY_SPECIFIC_CUSTOMER:
 				System.out.println("3.Display Specific Customer Details");
