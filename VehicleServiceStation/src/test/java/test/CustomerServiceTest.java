@@ -16,9 +16,13 @@ import com.project.service.CustomerService;
 	 void testGetAllCustomer() {
 		 CustomerService.getAllCustomer();
 	 }
+//	 @Test
+//	 void testAddCustomer() {
+//		 CustomerService.addCustomer();
+//	 }
 	 @Test
-	 void testAddCustomer() {
-		 CustomerService.addCustomer();
+	 void testSpecificCustomer() {
+		 CustomerService.getSpecificCustomer();
 	 }
 
 }

@@ -9,18 +9,7 @@ import com.project.dao.CustomerDao;
 import com.project.entity.Customer;
 
 public class CustomerService {
-	public static void getAllCustomer() {
-		
-		List<Customer>customerList=new ArrayList<>();
-		try(CustomerDao customerDao = new CustomerDao()){
-				customerDao.getAllCustomer(customerList);
-				for(Customer customer : customerList) 
-					System.out.println(customer);
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-	}
+	
 	public static void addCustomer() {
 		System.out.println("Enter id to add Customer Details : ");
 		int id=new Scanner (System.in).nextInt();
@@ -42,6 +31,42 @@ public class CustomerService {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		} 
+	}
+	
+	
+	public static void getAllCustomer() {
+		
+		List<Customer>customerList=new ArrayList<>();
+		try(CustomerDao customerDao = new CustomerDao()){
+				customerDao.getAllCustomer(customerList);
+				for(Customer customer : customerList) 
+					System.out.println(customer);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public static void getSpecificCustomer() {
+		System.out.println("Enter Customer mobile number to get Details: ");
+		String mobile = new Scanner(System.in).next();
+		try(CustomerDao customerDao = new CustomerDao()) {
+			
+			Customer customer=customerDao.getSpecificCustomer(mobile);
+			if(customer!=null)
+				System.out.println(customer);
+			else
+				System.out.println("Customer Not Found");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void updateCustomer() {
+		System.out.println("Enter Customer id to edit customer details: ");
+		int id =new Scanner (System.in).nextInt();
+		System.out.println("Enter Customer mobile to edit: ");
+		String mobile=new Scanner(System.in).next();
 	}
 
 }

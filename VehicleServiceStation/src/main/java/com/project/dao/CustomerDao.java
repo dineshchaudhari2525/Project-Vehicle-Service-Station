@@ -26,13 +26,9 @@ public class CustomerDao implements AutoCloseable {
 			}
 		}
 	}
-	@Override
-	public void close() throws SQLException {
-		this.connection.close();
-		
-	}
+	
 	public int addCustomer(Customer customer) throws SQLException {
-		String sql="INSERT INTO vehicle(id,name,mobile,email,adddress)VALUES(?,?,?,?,?)";
+		String sql="INSERT INTO customer(id,name,mobile,email,adddress)VALUES(?,?,?,?,?)";
 		PreparedStatement pst=this.connection.prepareStatement(sql);
 		pst.setInt(1, customer.getId());
 		pst.setString(2, customer.getName());
@@ -40,6 +36,22 @@ public class CustomerDao implements AutoCloseable {
 		pst.setString(4, customer.getEmail());
 		pst.setString(5, customer.getAddress());
 		return 0;
+	}
+	
+	public Customer getSpecificCustomer(String mobile) throws SQLException {
+		String sql="SELECT * FROM customer WHERE mobile=?";
+		try(PreparedStatement getSpecificCustomer=this.connection.prepareStatement(sql)){
+			getSpecificCustomer.setString(1, mobile);
+			ResultSet rs= getSpecificCustomer.executeQuery();
+			if(rs.next())
+				return new Customer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+			    return null;
+		}
+	}
+	@Override
+	public void close() throws SQLException {
+		this.connection.close();
+		
 	}
 
 }
