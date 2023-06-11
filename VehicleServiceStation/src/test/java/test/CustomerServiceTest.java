@@ -25,10 +25,14 @@ class CustomerServiceTest {
 //	void testSpecificCustomer() {
 //		CustomerService.getSpecificCustomer();
 //	}
-
+//
+//	@Test
+//	 void testUpdateCustomer() {
+//		CustomerService.updateCustomer();
+//	}
 	@Test
-	 void testUpdateCustomer() {
-		CustomerService.updateCustomer();
+	void testDeleteCustomer() {
+		CustomerService.deleteCustomer();
 	}
 	
 

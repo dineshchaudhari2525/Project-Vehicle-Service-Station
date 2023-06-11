@@ -71,24 +71,20 @@ public class SubMenu {
 		while ((choice = customerMenu()) != ECustomerMenu.BACK) {
 			switch (choice) {
 			case ADD_CUSTOMER:
-				System.out.println("1.Add Customer");
 				CustomerService.addCustomer();
 			
 				break;
 			case DISPLAY_ALL_CUSTOMER:
-				System.out.println("2.Display All Customer");
 				CustomerService.getAllCustomer();
 				
 				break;
 			case DISPLAY_SPECIFIC_CUSTOMER:
-				System.out.println("3.Display Specific Customer Details");
 				CustomerService.getSpecificCustomer();
 				break;
 			case EDIT_CUSTOMER:
-				System.out.println("4.Edit Customer");
 				break;
 			case DELETE_CUSTOMER:
-				System.out.println("5.Delete Customer");
+				CustomerService.deleteCustomer();
 				break;
 
 			default:

@@ -58,6 +58,13 @@ public class CustomerDao implements AutoCloseable {
 			return updateCustomer.executeUpdate();
 		}
 	}
+	public int deleteCustomer(int id) throws SQLException {
+		String sql="DELETE FROM customer WHERE id=? ";
+		try(PreparedStatement deleteCustomer=this.connection.prepareStatement(sql)){
+			deleteCustomer.setInt(1, id);
+			return deleteCustomer.executeUpdate();
+		}
+	}
 	@Override
 	public void close() throws SQLException {
 		this.connection.close();

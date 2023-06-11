@@ -78,6 +78,22 @@ public class CustomerService {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void deleteCustomer() {
+		System.out.println("Enter Customer id to delete details: ");
+		int id=new Scanner(System.in).nextInt();
+		try {
+			CustomerDao customerDao =new CustomerDao(); {
+				if(customerDao.deleteCustomer(id)>0)
+					System.out.println("Customer Data Deleted successfully");
+				else
+					System.out.println("Customer data not found");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
 
