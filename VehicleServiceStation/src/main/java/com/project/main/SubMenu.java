@@ -8,6 +8,7 @@ import java.util.Scanner;
 import com.project.dao.CustomerDao;
 import com.project.entity.Customer;
 import com.project.service.CustomerService;
+import com.project.service.PartsService;
 import com.project.service.VehicleService;
 
 enum ECustomerMenu {
@@ -365,7 +366,7 @@ public class SubMenu {
 		while ((choice = partsMenu()) != EPartsMenu.BACK) {
 			switch (choice) {
 			case ADD_PART:
-				System.out.println("Add Part");
+				PartsService.addParts();
 				break;
 			case DISPLAY_ALL_PARTS:
 				System.out.println("Display All Parts");
