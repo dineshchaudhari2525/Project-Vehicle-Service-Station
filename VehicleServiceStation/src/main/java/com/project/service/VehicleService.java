@@ -1,6 +1,8 @@
 package com.project.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.project.dao.VehicleDao;
@@ -25,6 +27,16 @@ public class VehicleService {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
+		
+	}
+	public static void getAllVehicle() {
+		List<Vehicle>vehicleList=new ArrayList<>();
+		try (VehicleDao vehicleDao = new VehicleDao()) {
+			vehicleDao.getAllVehicle(vehicleList);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
 		
 	}
 	
