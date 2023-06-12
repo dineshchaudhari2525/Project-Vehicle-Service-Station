@@ -42,5 +42,33 @@ public class PartsService {
 			
 		
 	}
-
+	public static void updateParts() {
+		System.out.println("Enter Parts id to edit price: ");
+		int id =new Scanner (System.in).nextInt();
+		System.out.println("Enter parts price : ");
+		Double price =new Scanner (System.in).nextDouble();
+		try(PartsDao partsDao=new PartsDao()){
+			if(partsDao.updateParts(id,price)>0)
+				System.out.println("Parts Data Updated Successfully");
+			else
+				System.out.println("Parts Not Found");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void deleteParts() {
+		System.out.println("Enter Parts id to delete details: ");
+		int id=new Scanner(System.in).nextInt();
+		try {
+			PartsDao partsDao =new PartsDao(); {
+				if(partsDao.deleteParts(id)>0)
+					System.out.println("Parts Data Deleted successfully");
+				else
+					System.out.println("Parts data not found");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

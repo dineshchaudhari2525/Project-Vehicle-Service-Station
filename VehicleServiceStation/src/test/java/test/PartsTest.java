@@ -9,9 +9,17 @@ public class PartsTest {
 //	void testAddParts() {
 //		PartsService.addParts();
 //	}
+//	@Test
+//	void testGetAllParts() {
+//		PartsService.getAllParts();
+//	}
+//	@Test
+//	void testUpdateParts() {
+//		PartsService.updateParts();
+//	}
 	@Test
-	void testGetAllParts() {
-		PartsService.getAllParts();
+	void testDeleteParts() {
+		PartsService.deleteParts();
 	}
 
 }

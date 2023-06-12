@@ -38,6 +38,24 @@ private Connection connection;
 			}
 		}
 	}
+	
+	public int updateParts(int id,Double price) throws SQLException {
+		String sql="UPDATE parts SET price =? WHERE id=?";
+		try(PreparedStatement updateParts=this.connection.prepareStatement(sql)){
+			updateParts.setInt(2, id);
+			updateParts.setDouble(1, price);
+	
+			return updateParts.executeUpdate();
+		}
+	}
+	public int deleteParts(int id) throws SQLException {
+		String sql="DELETE FROM parts WHERE id=? ";
+		try(PreparedStatement deleteParts=this.connection.prepareStatement(sql)){
+			deleteParts.setInt(1, id);
+			return deleteParts.executeUpdate();
+		}
+	}
+
 	@Override
 	public void close() throws SQLException {
 		this.connection.close();

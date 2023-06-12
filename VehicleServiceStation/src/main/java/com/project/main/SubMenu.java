@@ -372,10 +372,10 @@ public class SubMenu {
 				PartsService.getAllParts();
 				break;
 			case EDIT_PART_PRICE:
-				System.out.println("Edit Part Price");
+				PartsService.updateParts();
 				break;
 			case DELETE_PART:
-				System.out.println("Delete Part");
+				PartsService.deleteParts();
 				break;
 
 			default:
