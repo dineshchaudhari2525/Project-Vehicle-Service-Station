@@ -2,7 +2,9 @@ package com.project.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.project.entity.Parts;
 import com.project.entity.Vehicle;
@@ -24,6 +26,17 @@ private Connection connection;
 		pst.setDouble(4, parts.getPrice());
 		int cnt=pst.executeUpdate();
 		return cnt;
+	}
+	
+	public void getAllParts(List<Parts>partsList) throws SQLException {
+		String sql="SELECT * FROM parts";
+		try(PreparedStatement getParts=this.connection.prepareStatement(sql)){
+			ResultSet rs=getParts.executeQuery();
+			while(rs.next()) {
+				Parts parts=new Parts(rs.getInt("id"),rs.getString("name"),rs.getString("description"),rs.getDouble("price"));
+				partsList.add(parts);
+			}
+		}
 	}
 	@Override
 	public void close() throws SQLException {

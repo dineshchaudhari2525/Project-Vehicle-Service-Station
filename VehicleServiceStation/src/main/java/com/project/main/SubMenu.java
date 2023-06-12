@@ -369,7 +369,7 @@ public class SubMenu {
 				PartsService.addParts();
 				break;
 			case DISPLAY_ALL_PARTS:
-				System.out.println("Display All Parts");
+				PartsService.getAllParts();
 				break;
 			case EDIT_PART_PRICE:
 				System.out.println("Edit Part Price");

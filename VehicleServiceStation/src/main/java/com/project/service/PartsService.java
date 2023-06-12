@@ -1,6 +1,8 @@
 package com.project.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.project.dao.PartsDao;
@@ -28,6 +30,16 @@ public class PartsService {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
+		
+	}
+	public static void getAllParts() {
+		List<Parts>partsList=new ArrayList<>();
+		try (PartsDao partsDao = new PartsDao()) {
+			partsDao.getAllParts(partsList);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
 		
 	}
 
