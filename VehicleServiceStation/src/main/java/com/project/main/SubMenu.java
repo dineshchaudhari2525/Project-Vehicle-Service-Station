@@ -8,6 +8,7 @@ import java.util.Scanner;
 import com.project.dao.CustomerDao;
 import com.project.entity.Customer;
 import com.project.service.CustomerService;
+import com.project.service.VehicleService;
 
 enum ECustomerMenu {
 	BACK, ADD_CUSTOMER, DISPLAY_ALL_CUSTOMER, DISPLAY_SPECIFIC_CUSTOMER, EDIT_CUSTOMER, DELETE_CUSTOMER, DEFAULT
@@ -82,6 +83,7 @@ public class SubMenu {
 				CustomerService.getSpecificCustomer();
 				break;
 			case EDIT_CUSTOMER:
+				CustomerService.updateCustomer();
 				break;
 			case DELETE_CUSTOMER:
 				CustomerService.deleteCustomer();
@@ -114,7 +116,7 @@ public class SubMenu {
 		while ((choice = vehicleMenu()) != EVehicleMenu.BACK) {
 			switch (choice) {
 			case ADD_VEHICLE:
-				System.out.println("Add Vehicle");
+				VehicleService.addVehicle();
 				break;
 			case DISPLAY_ALL_VEHICLE:
 				System.out.println("Display All Vehicle");
