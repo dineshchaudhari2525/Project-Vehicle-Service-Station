@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.project.dao.CustomerDao;
 import com.project.dao.VehicleDao;
 import com.project.entity.Vehicle;
 
@@ -46,6 +47,21 @@ public class VehicleService {
 			Vehicle vehicle=vehicleDao.getSpecificVehicle(id);
 			if(vehicle!=null)
 				System.out.println(vehicle);
+			else
+				System.out.println("Vehicle Not Found");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void updateVehicle() {
+		System.out.println("Enter Vehicle id to edit vehicle details: ");
+		int id =new Scanner (System.in).nextInt();
+		System.out.println("Enter Vehicle model : ");
+		String model =new Scanner (System.in).next();
+		try(VehicleDao vehicleDao=new VehicleDao()){
+			if(vehicleDao.updateVehicle(id,model)>0)
+				System.out.println("Vehicle Data Updated Successfully");
 			else
 				System.out.println("Vehicle Not Found");
 		}catch(SQLException e) {

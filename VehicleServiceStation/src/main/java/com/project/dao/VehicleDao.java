@@ -51,6 +51,16 @@ private Connection connection;
 		  return null;
 	}
 	
+	
+	public int updateVehicle(int id,String model) throws SQLException {
+		String sql="UPDATE vehicle SET model =? WHERE id=?";
+		try(PreparedStatement updateVehicle=this.connection.prepareStatement(sql)){
+			updateVehicle.setInt(3, id);
+			updateVehicle.setString(1, model);
+	
+			return updateVehicle.executeUpdate();
+		}
+	}
 	@Override
 	public void close() throws SQLException {
 		this.connection.close();

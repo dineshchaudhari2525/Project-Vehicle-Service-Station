@@ -125,7 +125,7 @@ public class SubMenu {
 				VehicleService.getSpecificVehicle();
 				break;
 			case EDIT_VEHICLE:
-				System.out.println("Edit Vehicle");
+				VehicleService.updateVehicle();
 				break;
 			case DELETE_VEHICLE:
 				System.out.println("Delete Vehicle");

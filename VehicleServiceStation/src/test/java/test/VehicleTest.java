@@ -14,9 +14,13 @@ public class VehicleTest {
 //	void testAllVehicle() {
 //		VehicleService.getAllVehicle();
 //	}
+//	@Test
+//	void testGetSpecificVehicle() {
+//		VehicleService.getSpecificVehicle();
+//	}
 	@Test
-	void testGetSpecificVehicle() {
-		VehicleService.getSpecificVehicle();
+	void testUpdateVehicle() {
+		VehicleService.updateVehicle();
 	}
 
 }
