@@ -68,5 +68,19 @@ public class VehicleService {
 			e.printStackTrace();
 		}
 	}
-	
+	public static void deleteVehicle() {
+		System.out.println("Enter Vehicle id to delete details: ");
+		int id=new Scanner(System.in).nextInt();
+		try {
+			VehicleDao vehicleDao =new VehicleDao(); {
+				if(vehicleDao.deleteVehicle(id)>0)
+					System.out.println("Vehicle Data Deleted successfully");
+				else
+					System.out.println("Vehicle data not found");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

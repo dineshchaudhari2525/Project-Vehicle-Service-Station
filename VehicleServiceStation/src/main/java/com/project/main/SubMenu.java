@@ -128,7 +128,7 @@ public class SubMenu {
 				VehicleService.updateVehicle();
 				break;
 			case DELETE_VEHICLE:
-				System.out.println("Delete Vehicle");
+				VehicleService.deleteVehicle();
 				break;
 
 			default:

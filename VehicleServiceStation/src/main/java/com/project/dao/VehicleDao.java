@@ -61,6 +61,13 @@ private Connection connection;
 			return updateVehicle.executeUpdate();
 		}
 	}
+	public int deleteVehicle(int id) throws SQLException {
+		String sql="DELETE FROM customer WHERE id=? ";
+		try(PreparedStatement deleteVehicle=this.connection.prepareStatement(sql)){
+			deleteVehicle.setInt(1, id);
+			return deleteVehicle.executeUpdate();
+		}
+	}
 	@Override
 	public void close() throws SQLException {
 		this.connection.close();
