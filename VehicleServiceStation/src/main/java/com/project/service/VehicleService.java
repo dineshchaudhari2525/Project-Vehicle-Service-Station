@@ -39,5 +39,18 @@ public class VehicleService {
 			
 		
 	}
+	public static void getSpecificVehicle() {
+		System.out.println("Enter id to get Vehicle Details: ");
+		int id=new Scanner(System.in).nextInt();
+		try(VehicleDao vehicleDao=new VehicleDao()){
+			Vehicle vehicle=vehicleDao.getSpecificVehicle(id);
+			if(vehicle!=null)
+				System.out.println(vehicle);
+			else
+				System.out.println("Vehicle Not Found");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }

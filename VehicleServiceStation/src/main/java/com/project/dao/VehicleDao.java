@@ -37,6 +37,20 @@ private Connection connection;
 			}
 		}
 	}
+	
+	public Vehicle getSpecificVehicle(int id) throws SQLException{
+		String sql="SELECT * FROM vehicle WHERE id=?";
+		try(PreparedStatement getSpecificVehicle=this.connection.prepareStatement(sql)){
+			getSpecificVehicle.setInt(1, id);
+			ResultSet rs= getSpecificVehicle.executeQuery();
+			if(rs.next())
+				return new Vehicle(rs.getInt("id"),rs.getString("company"),rs.getString("model"));
+			  
+			
+		}
+		  return null;
+	}
+	
 	@Override
 	public void close() throws SQLException {
 		this.connection.close();

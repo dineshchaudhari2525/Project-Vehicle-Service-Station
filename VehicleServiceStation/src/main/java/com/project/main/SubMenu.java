@@ -122,7 +122,7 @@ public class SubMenu {
 				VehicleService.getAllVehicle();
 				break;
 			case DISPLAY_SPECIFIC_VEHICLE:
-				System.out.println("Display Specific Vehicle Details");
+				VehicleService.getSpecificVehicle();
 				break;
 			case EDIT_VEHICLE:
 				System.out.println("Edit Vehicle");
