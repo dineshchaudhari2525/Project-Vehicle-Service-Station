@@ -44,9 +44,10 @@ public class CustomerDao implements AutoCloseable {
 		try(PreparedStatement getSpecificCustomer=this.connection.prepareStatement(sql)){
 			getSpecificCustomer.setString(1, mobile);
 			ResultSet rs= getSpecificCustomer.executeQuery();
-			if(rs.next())
+			if(rs.next()) {
 				return new Customer(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
-			    return null;
+			}
+			return null;
 		}
 	}
 	

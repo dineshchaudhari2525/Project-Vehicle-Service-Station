@@ -9,6 +9,13 @@ public class Vehicle {
 	public Vehicle() {
 
 	}
+
+	public Vehicle(String company, String model) {
+		super();
+	
+		this.company = company;
+		this.model = model;
+	}
 	public Vehicle(int id, String company, String model) {
 		super();
 		this.id = id;

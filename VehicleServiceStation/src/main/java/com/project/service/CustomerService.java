@@ -47,21 +47,18 @@ public class CustomerService {
 		
 	}
 
-	public static void getSpecificCustomer() {
+	public static Customer getSpecificCustomer() {
 		System.out.println("Enter Customer mobile number to get Details: ");
 		String mobile = new Scanner(System.in).next();
+		
 		try(CustomerDao customerDao = new CustomerDao()) {
-			
-			Customer customer=customerDao.getSpecificCustomer(mobile);
-			if(customer!=null)
-				System.out.println(customer);
-			else
-				System.out.println("Customer Not Found");
+			return customerDao.getSpecificCustomer(mobile);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
+	
 	public static void updateCustomer() {
 		System.out.println("Enter Customer id to edit customer details: ");
 		int id =new Scanner (System.in).nextInt();
@@ -90,7 +87,7 @@ public class CustomerService {
 					System.out.println("Customer data not found");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
