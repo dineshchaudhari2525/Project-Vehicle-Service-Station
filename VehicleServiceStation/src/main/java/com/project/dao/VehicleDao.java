@@ -33,7 +33,7 @@ private Connection connection;
 		PreparedStatement pst=this.connection.prepareStatement(sql);
 		pst.setString(1, customerVehicle.getVehicle_number());
 		pst.setInt(2, customerVehicle.getCustomer_id());
-		pst.setInt(1, customerVehicle.getVehicle_id());
+		pst.setInt(3, customerVehicle.getVehicle_id());
 		int cnt=pst.executeUpdate();
 		return cnt;
 	}
@@ -55,7 +55,6 @@ private Connection connection;
 	    }
 	    return specificVehicles;
 	}
-	
 	public void getAllVehicle(List<Vehicle>vehicleList) throws SQLException {
 		String sql="SELECT * FROM vehicle";
 		try(PreparedStatement getVehicle=this.connection.prepareStatement(sql)){

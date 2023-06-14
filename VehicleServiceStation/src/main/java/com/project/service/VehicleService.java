@@ -79,7 +79,7 @@ public class VehicleService {
 			
 			try (VehicleDao vehicleDao = new VehicleDao()) {
 				List<SpecificCustomerVehicles> vehicles = vehicleDao.specificCustomerVehicles(cust.getId());
-				System.out.println("### All the vehicles for customer: "+cust.getName()+" "+cust.getMobile());
+				System.out.println("### All the vehicles for customer => "+cust.getName()+" "+cust.getMobile());
 				for (SpecificCustomerVehicles v : vehicles) {
 					System.out.println(v);
 				}
@@ -89,15 +89,15 @@ public class VehicleService {
 		}
 	
 	public static void updateVehicle() {
-		System.out.println("Enter Vehicle id to edit vehicle details: ");
+		System.out.println("Enter Vehicle id to edit vehicle details => ");
 		int id =new Scanner (System.in).nextInt();
-		System.out.println("Enter Vehicle model : ");
+		System.out.println("Enter Vehicle model =>  ");
 		String model =new Scanner (System.in).next();
 		try(VehicleDao vehicleDao=new VehicleDao()){
 			if(vehicleDao.updateVehicle(id,model)>0)
-				System.out.println("Vehicle Data Updated Successfully");
+				System.out.println("### Vehicle Data Updated Successfully ###");
 			else
-				System.out.println("Vehicle Not Found");
+				System.out.println("Vehicle Not Found!!!");
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
