@@ -6,22 +6,22 @@ import com.project.service.VehicleService;
 
 public class VehicleTest {
 	
-//	@Test
-//	void testAddVehicle(){
-//		VehicleService.addVehicle();
-//	}
-//	@Test
-//	void testAllVehicle() {
-//		VehicleService.getAllVehicle();
-////	}
-//	@Test
-//	void testGetSpecificVehicles() {
-//		VehicleService.getSpecificVehicles();
-//	}
-//	@Test
-//	void testUpdateVehicle() {
-//		VehicleService.updateVehicle();
-//	}
+	@Test
+	void testAddVehicle(){
+		VehicleService.addVehicle();
+	}
+	@Test
+	void testAllVehicle() {
+		VehicleService.getAllVehicle();
+	}
+	@Test
+	void testGetSpecificVehicles() {
+		VehicleService.getSpecificVehicles();
+	}
+	@Test
+	void testUpdateVehicle() {
+		VehicleService.updateVehicle();
+	}
 	@Test
 	void testDeleteVehicle() {
 		VehicleService.deleteVehicle();
