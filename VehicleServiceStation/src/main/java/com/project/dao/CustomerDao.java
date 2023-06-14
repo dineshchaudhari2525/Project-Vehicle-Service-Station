@@ -28,13 +28,12 @@ public class CustomerDao implements AutoCloseable {
 	}
 	
 	public int addCustomer(Customer customer) throws SQLException {
-		String sql="INSERT INTO customer(id,name,mobile,email,address) VALUES(?,?,?,?,?)";
+		String sql="INSERT INTO customer(name,mobile,email,address) VALUES(?,?,?,?)";
 		PreparedStatement pst=this.connection.prepareStatement(sql);
-		pst.setInt(1, customer.getId());
-		pst.setString(2, customer.getName());
-		pst.setString(3, customer.getMobile());
-		pst.setString(4, customer.getEmail());
-		pst.setString(5, customer.getAddress());
+		pst.setString(1, customer.getName());
+		pst.setString(2, customer.getMobile());
+		pst.setString(3, customer.getEmail());
+		pst.setString(4, customer.getAddress());
 		int cnt=pst.executeUpdate();
 		return cnt;
 	}

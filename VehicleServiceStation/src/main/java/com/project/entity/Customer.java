@@ -11,6 +11,14 @@ public class Customer {
 		
 	}
 
+	public Customer(String name, String mobile, String email, String address) {
+		super();
+		this.name = name;
+		this.mobile = mobile;
+		this.email = email;
+		this.address = address;
+	}
+	
 	public Customer(int id, String name, String mobile, String email, String address) {
 		super();
 		this.id = id;

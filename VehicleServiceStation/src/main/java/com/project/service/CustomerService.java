@@ -11,8 +11,6 @@ import com.project.entity.Customer;
 public class CustomerService {
 	
 	public static void addCustomer() {
-		System.out.println("Enter id to add Customer Details : ");
-		int id=new Scanner (System.in).nextInt();
 		System.out.println("Enter customer name  : ");
 		String name=new Scanner(System.in).next();
 		System.out.println("Enter customer mobile  : ");
@@ -21,7 +19,7 @@ public class CustomerService {
 		String email=new Scanner(System.in).next();
 		System.out.println("Enter customer address  : ");
 		String address=new Scanner(System.in).next();
-	 	Customer customer=new Customer(id,name,mobile,email,address);
+	 	Customer customer=new Customer(name,mobile,email,address);
         try(CustomerDao customerDao = new CustomerDao()){
 			
 			if(customerDao.addCustomer(customer)>0)
