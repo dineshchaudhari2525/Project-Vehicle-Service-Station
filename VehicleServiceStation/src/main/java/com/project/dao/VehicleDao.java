@@ -89,10 +89,10 @@ private Connection connection;
 			return updateVehicle.executeUpdate();
 		}
 	}
-	public int deleteVehicle(int id) throws SQLException {
-		String sql="DELETE FROM customer WHERE id=? ";
+	public int deleteVehicle(String vehicle_number) throws SQLException {
+		String sql="DELETE FROM customer_vehicles WHERE vehicle_number=? ";
 		try(PreparedStatement deleteVehicle=this.connection.prepareStatement(sql)){
-			deleteVehicle.setInt(1, id);
+			deleteVehicle.setString(1, vehicle_number);
 			return deleteVehicle.executeUpdate();
 		}
 	}

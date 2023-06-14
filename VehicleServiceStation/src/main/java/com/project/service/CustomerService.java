@@ -46,18 +46,19 @@ public class CustomerService {
 		}
 		
 	}
-
+    
 	public static Customer getSpecificCustomer() {
 		System.out.println("Enter Customer mobile number to get Details: ");
 		String mobile = new Scanner(System.in).next();
 		
 		try(CustomerDao customerDao = new CustomerDao()) {
-			return customerDao.getSpecificCustomer(mobile);
+			return  customerDao.getSpecificCustomer(mobile);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
+
 	
 	public static void updateCustomer() {
 		System.out.println("Enter Customer id to edit customer details: ");

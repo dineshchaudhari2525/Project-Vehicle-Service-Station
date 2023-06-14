@@ -36,6 +36,10 @@ public class PartsService {
 		List<Parts>partsList=new ArrayList<>();
 		try (PartsDao partsDao = new PartsDao()) {
 			partsDao.getAllParts(partsList);
+			for(Parts parts:partsList) {
+				System.out.println(parts);
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

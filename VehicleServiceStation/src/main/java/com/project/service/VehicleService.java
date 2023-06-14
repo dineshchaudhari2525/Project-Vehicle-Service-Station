@@ -103,14 +103,15 @@ public class VehicleService {
 		}
 	}
 	public static void deleteVehicle() {
-		System.out.println("Enter Vehicle id to delete details: ");
-		int id=new Scanner(System.in).nextInt();
+		getSpecificVehicles();
+		System.out.println("Enter Vehicle number to delete details: ");
+		String vehicle_number=new Scanner(System.in).next();
 		try {
 			VehicleDao vehicleDao =new VehicleDao(); {
-				if(vehicleDao.deleteVehicle(id)>0)
-					System.out.println("Vehicle Data Deleted successfully");
+				if(vehicleDao.deleteVehicle(vehicle_number)>0)
+					System.out.println("Vehicle  Deleted successfully");
 				else
-					System.out.println("Vehicle data not found");
+					System.out.println("Vehicle  not found");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -81,7 +81,7 @@ public class SubMenu {
 				
 				break;
 			case DISPLAY_SPECIFIC_CUSTOMER:
-				CustomerService.getSpecificCustomer();
+			    System.out.println(CustomerService.getSpecificCustomer());	
 				break;
 			case EDIT_CUSTOMER:
 				CustomerService.updateCustomer();
