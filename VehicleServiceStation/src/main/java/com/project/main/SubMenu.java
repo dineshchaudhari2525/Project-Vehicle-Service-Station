@@ -157,13 +157,17 @@ public class SubMenu {
 
 	public static void serviceMain() {
 		EServiceMenu choice;
+		String vehicle_number=null;
 		while ((choice = serviceMenu()) != EServiceMenu.BACK) {
 			switch (choice) {
 			case SELECT_CUSTOMER_VEHICLE:
-				ServiceReqService.selectCustomerVehilcle();
+				vehicle_number=ServiceReqService.selectCustomerVehilcle();
 				break;
 			case PROCESS_REQUEST:
-				ServiceReqService.processRequest();
+				if(vehicle_number!=null)
+				processRequestMain();
+				else
+					System.out.println("First select the vehicle!!");
 				break;
 			case PREPARE_AND_DISPLAY_BILL:
 				System.out.println("Prepare and Display Bill");

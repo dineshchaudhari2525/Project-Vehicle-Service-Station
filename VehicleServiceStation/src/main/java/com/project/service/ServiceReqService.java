@@ -54,13 +54,7 @@ public class ServiceReqService {
 //			}
 
 		}
-	public static void processRequest() {
-		if(ServiceReqService.selectCustomerVehilcle()==null) {
-			System.out.println("First Select Customer Vehicle");
-		}
-		SubMenu.processRequestMain();
-		
-	}
+	
 		
 		
 	
