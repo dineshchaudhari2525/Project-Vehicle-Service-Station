@@ -55,6 +55,19 @@ public class VehicleDaoTest {
 		
 	}
 	
+	@Test
+	public void testGetSpecificVehicle() {
+		VehicleDao vehicleDao;
+		try {
+			vehicleDao =new VehicleDao();
+			System.out.println(vehicleDao.getSpecificVehicle(1));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 
 }
 
