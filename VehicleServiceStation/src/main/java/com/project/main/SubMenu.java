@@ -1,6 +1,7 @@
 package com.project.main;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,6 +10,7 @@ import com.project.dao.CustomerDao;
 import com.project.entity.Customer;
 import com.project.service.CustomerService;
 import com.project.service.PartsService;
+import com.project.service.ServiceReqService;
 import com.project.service.VehicleService;
 
 enum ECustomerMenu {
@@ -158,10 +160,10 @@ public class SubMenu {
 		while ((choice = serviceMenu()) != EServiceMenu.BACK) {
 			switch (choice) {
 			case SELECT_CUSTOMER_VEHICLE:
-				System.out.println("Select Customer Vehicle");
+				ServiceReqService.selectCustomerVehilcle();
 				break;
 			case PROCESS_REQUEST:
-				SubMenu.processRequestMain();
+			     processRequestMain();
 				break;
 			case PREPARE_AND_DISPLAY_BILL:
 				System.out.println("Prepare and Display Bill");
