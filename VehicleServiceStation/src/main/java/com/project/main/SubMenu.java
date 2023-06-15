@@ -163,7 +163,7 @@ public class SubMenu {
 				ServiceReqService.selectCustomerVehilcle();
 				break;
 			case PROCESS_REQUEST:
-			     processRequestMain();
+				ServiceReqService.processRequest();
 				break;
 			case PREPARE_AND_DISPLAY_BILL:
 				System.out.println("Prepare and Display Bill");

@@ -11,6 +11,7 @@ private Connection connection;
 	public ServiceReqDao() throws SQLException {
 		this.connection = DBUtil.getConnection();
 	}
+	
 	public void vehicleRegister(String vehicle_number,int customer_id,int vehicle_id) throws SQLException {
 		String sql="INSERT INTO customer_vehicles(vehicle_number,customer_id,vehicle_id) VALUES(?,?,?)";
 		PreparedStatement pst=this.connection.prepareStatement(sql);

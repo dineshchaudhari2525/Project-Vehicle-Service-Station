@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import com.project.service.VehicleService;
 
-public class VehicleTest {
+public class VehicleServiceTest {
 	
 	@Test
 	void testAddVehicle(){

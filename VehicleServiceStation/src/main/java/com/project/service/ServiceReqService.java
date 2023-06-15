@@ -7,6 +7,7 @@ import com.project.dao.VehicleDao;
 import com.project.entity.Customer;
 import com.project.entity.CustomerVehicle;
 import com.project.entity.Vehicle;
+import com.project.main.SubMenu;
 
 public class ServiceReqService {
 	
@@ -54,9 +55,10 @@ public class ServiceReqService {
 
 		}
 	public static void processRequest() {
-		if(selectCustomerVehilcle()==null) {
+		if(ServiceReqService.selectCustomerVehilcle()==null) {
 			System.out.println("First Select Customer Vehicle");
 		}
+		SubMenu.processRequestMain();
 		
 	}
 		
