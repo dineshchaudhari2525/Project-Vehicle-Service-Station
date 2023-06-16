@@ -78,6 +78,17 @@ public class VehicleDaoTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}@Test
+	public void testDeleteCustomer() {
+		VehicleDao vehicleDao;
+		try {
+			vehicleDao=new VehicleDao();
+			System.out.println(vehicleDao.deleteVehicle("MH50DF7177"));
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 
