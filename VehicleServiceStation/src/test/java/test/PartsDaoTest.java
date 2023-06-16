@@ -1,6 +1,8 @@
 package test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,5 +23,20 @@ public class PartsDaoTest {
 		}
 	}
 	
+	@Test
+	public void testGetAllParts() {
+		List<Parts>partsList=new ArrayList<>();
+		PartsDao partsDao;
+		try {
+			partsDao=new PartsDao();
+			partsDao.getAllParts(partsList);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		partsList.forEach(System.out::println);
+	}
+	
 
 }
+//testAddParts() case from PartsDao tested Successfully
