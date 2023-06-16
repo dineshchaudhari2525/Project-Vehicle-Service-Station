@@ -36,6 +36,17 @@ public class PartsDaoTest {
 		}
 		partsList.forEach(System.out::println);
 	}
+	@Test
+	public void testUpdateParts() {
+		PartsDao partsDao;
+		try {
+			partsDao=new PartsDao();
+			System.out.println(partsDao.updateParts(9, 6650d));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 
 }
