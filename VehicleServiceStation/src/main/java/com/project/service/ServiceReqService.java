@@ -10,54 +10,21 @@ import com.project.entity.Vehicle;
 import com.project.main.SubMenu;
 
 public class ServiceReqService {
-	
+
 	public static String selectCustomerVehilcle() {
-		
+
 		VehicleService.getSpecificVehicles();
-		System.out.println("Choose vehicle_number from the list or input details of new vehicle");
-		String vehicleNumber = new Scanner(System.in).next();
-	   return vehicleNumber;
-		
-//		if (vehicleNumber == null) {
-////			System.out.println("Enter vehicle number=> ");
-////			String vehicle_number=new Scanner (System.in).nextInt();
-//			System.out.println("Enter customer id=> ");
-//			int customer_id=new Scanner (System.in).nextInt();
-//			System.out.println("Enter vehicle id=> ");
-//			int vehicle_id=new Scanner (System.in).nextInt();
-
-//			VehicleService.getAllVehicle();
-//	    	System.out.println("Select the Vehicle=>");
-//	    	System.out.println("Enter the vehicle id Or Enter 0 for adding the company & model...");
-//	    	int id =new Scanner(System.in).nextInt();
-
-//	    	if (id==0) {
-//
-//					System.out.println("Enter Company Name:  ");
-//					String company=new Scanner(System.in).next();
-//					System.out.println("Enter Company Model:  ");
-//					String model=new Scanner(System.in).next();
-//					VehicleDao vehicleDao=new VehicleDao();
-//			
-//						vehicleDao.addVehicle(new Vehicle(company,model));
-//				
-//					System.out.println("#### Vehicle  Added####  ");
-//				}
-//	    	else {
-//	    		VehicleDao vehicleDao=new VehicleDao();
-//				
-//				vehicleDao.customerVehicle(new CustomerVehicle(vehicleNumber));
-//	    		
-//	    		System.out.println("#### Vehicle  Added####  ");
-//	    	}
-//	    	
-//			}
-
+		System.out.println("Is this New Vehicle? if yes press 0 otherwise press 1 ");
+		int choice = new Scanner(System.in).nextInt();
+		if (choice == 1) {
+			System.out.println("Choose vehicle_number from the list or input details of new vehicle=> ");
+			String vehicleNumber = new Scanner(System.in).next();
+			return vehicleNumber;
+		} else {
+			System.out.println("Enter 0 to go back and 1st Insert cutomer_vehicles");
+			return null;
 		}
-	
-		
-		
-	
-	
+
+	}
 
 }
