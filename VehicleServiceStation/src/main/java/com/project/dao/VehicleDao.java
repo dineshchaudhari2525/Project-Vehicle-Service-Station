@@ -80,13 +80,12 @@ private Connection connection;
 	}
 	
 	
-	public int updateVehicle(int id,String model) throws SQLException {
-		String sql="UPDATE vehicle SET model =? WHERE id=?";
-		try(PreparedStatement updateVehicle=this.connection.prepareStatement(sql)){
-			updateVehicle.setInt(3, id);
-			updateVehicle.setString(1, model);
-	
-			return updateVehicle.executeUpdate();
+	public int updateCustomerVehicle(String old_vehicle_number,String New_vehicle_number) throws SQLException {
+		String sql="UPDATE customer_vehicles SET vehicle_number =? WHERE vehicle_number=?";
+		try(PreparedStatement updateCustomerVehicle=this.connection.prepareStatement(sql)){
+			updateCustomerVehicle.setString(1, New_vehicle_number);
+			updateCustomerVehicle.setString(2, old_vehicle_number);
+			return updateCustomerVehicle.executeUpdate();
 		}
 	}
 	public int deleteVehicle(String vehicle_number) throws SQLException {

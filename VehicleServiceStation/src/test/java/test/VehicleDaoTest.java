@@ -67,6 +67,18 @@ public class VehicleDaoTest {
 		}
 		
 	}
+	@Test
+	public void testUpdateCustomerVehicle() {
+		VehicleDao vehicleDao;
+		try {
+			vehicleDao=new VehicleDao();
+			System.out.println(vehicleDao.updateCustomerVehicle("MH20","MH20SD1232"));
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 
 }
