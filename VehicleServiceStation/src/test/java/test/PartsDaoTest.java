@@ -48,6 +48,18 @@ public class PartsDaoTest {
 		}
 	}
 	
+	@Test
+	public void testDeleteParts() {
+		PartsDao partsDao;
+		try {
+			partsDao=new PartsDao();
+			System.out.println(partsDao.deleteParts(9));
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 }
-//testAddParts() case from PartsDao tested Successfully
