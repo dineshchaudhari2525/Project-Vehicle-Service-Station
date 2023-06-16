@@ -95,4 +95,4 @@ public class VehicleDaoTest {
 }
 
    
-//testAddVehicle() case from VehicleDao tested successfully
+
