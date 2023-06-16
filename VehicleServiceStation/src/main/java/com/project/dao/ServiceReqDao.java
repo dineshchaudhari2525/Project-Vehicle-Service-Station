@@ -1,4 +1,4 @@
-package com.project.dao;
+package com.project.dao; 
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +19,12 @@ private Connection connection;
 		pst.setInt(2,customer_id);
 		pst.setInt(3,vehicle_id);
 	}
+	
+//	public void addNewService(String vehicle_number) throws SQLException {
+//		String sql="INSERT INTO service_requests(vehicle_number)VALUES(?)";
+//		PreparedStatement pst=this.connection.prepareStatement(sql);
+//		pst.setString(1, vehicle_number);
+//	}
 	
 	@Override
 	public void close() throws SQLException {
