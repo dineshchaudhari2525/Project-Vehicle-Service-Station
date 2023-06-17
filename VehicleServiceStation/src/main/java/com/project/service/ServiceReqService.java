@@ -28,8 +28,8 @@ public class ServiceReqService {
 		}
 
 	}
-	
-//	public static void  newService() {
+//	
+//   public static void  newService() {
 //		ServiceReqDao serviceReqDao;
 //		serviceReqDao=new ServiceReqDao();
 //	}
