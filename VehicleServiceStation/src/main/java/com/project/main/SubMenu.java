@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import com.project.dao.CustomerDao;
 import com.project.entity.Customer;
+import com.project.entity.ServiceRequest;
 import com.project.service.CustomerService;
 import com.project.service.PartsService;
 import com.project.service.ServiceReqService;
@@ -200,18 +201,24 @@ public class SubMenu {
 
 	public static void processRequestMain(String vehicleNumber) {
 		EProcessRequestMenu choice;
+		ServiceRequest serviceRequest=null;
 		while ((choice = processRequestMenu()) != EProcessRequestMenu.BACK) {
 			switch (choice) {
 			case NEW_SERVICE:
 				try {
-					SubMenu.newServiceMain(vehicleNumber);
+					serviceRequest=ServiceService.newService(vehicleNumber);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				break;
 			case EXISTING_SERVICE:
-				SubMenu.existingServiceMain();
+				try {
+				System.out.println(ServiceService.fetchTodaysServiceList());	
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				break;
 			case MAINTENANCE:
 				SubMenu.maintenanceRequirementMain();
@@ -238,24 +245,6 @@ public class SubMenu {
 			return ENewService.values()[2];
 		else
 			return ENewService.values()[choice];
-	}
-
-	public static void newServiceMain(String vehicleNumber) throws SQLException {
-		ENewService choice;
-		while ((choice = newServiceMenu()) != ENewService.BACK) {
-			System.out.println("here");
-			System.out.println(choice);
-			switch (choice) {
-			case CREATE_NEW_SERVICE:
-				System.out.println("Creating new Services");
-				ServiceService.newService(vehicleNumber);
-				break;
-
-			default:
-				System.out.println("Wrong Choice");
-				break;
-			}
-		}
 	}
 
 	public static EExistingService existingServiceMenu() {
