@@ -11,7 +11,7 @@ import com.project.entity.Customer;
 
 public class CustomerDaoTest {
 	@Test
-	public void testGetAllCustomers()
+	public void testGetAllCustomers()  
 	{
 		try {
 			List<Customer> customer=new ArrayList<>();

@@ -74,7 +74,6 @@ private Connection connection;
 			if(rs.next())
 				return new Vehicle(rs.getInt("id"),rs.getString("company"),rs.getString("model"));
 			  
-			
 		}
 		  return null;
 	}

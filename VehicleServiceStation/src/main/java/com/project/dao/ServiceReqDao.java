@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import com.mysql.cj.xdevapi.Statement;
 import com.project.util.DBUtil;
 public class ServiceReqDao implements AutoCloseable {
 private Connection connection;
@@ -20,12 +21,7 @@ private Connection connection;
 		pst.setInt(3,vehicle_id);
 	}
 	
-//	public void addNewService(String vehicle_number) throws SQLException {
-//		String sql="INSERT INTO service_requests(vehicle_number)VALUES(?)";
-//		PreparedStatement pst=this.connection.prepareStatement(sql);
-//		pst.setString(1, vehicle_number);
-//	}
-	
+		
 	@Override
 	public void close() throws SQLException {
 		this.connection.close();

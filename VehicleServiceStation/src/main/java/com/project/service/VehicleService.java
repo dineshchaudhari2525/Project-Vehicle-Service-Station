@@ -71,18 +71,18 @@ public class VehicleService {
 
 	}
 
-	public static void getSpecificVehicles() {
+	public static List<SpecificCustomerVehicles> getSpecificVehicles() {
 		Customer cust = CustomerService.getSpecificCustomer();
-
+		List<SpecificCustomerVehicles> vehicles=null;
 		try (VehicleDao vehicleDao = new VehicleDao()) {
-			List<SpecificCustomerVehicles> vehicles = vehicleDao.specificCustomerVehicles(cust.getId());
+			 vehicles = vehicleDao.specificCustomerVehicles(cust.getId());
 			System.out.println("### All the vehicles for customer => " + cust.getName() + " " + cust.getMobile());
-			for (SpecificCustomerVehicles v : vehicles) {
-				System.out.println(v);
-			}
+			//System.out.println("");
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return vehicles;
 	}
 
 	public static void updateVehicle() {

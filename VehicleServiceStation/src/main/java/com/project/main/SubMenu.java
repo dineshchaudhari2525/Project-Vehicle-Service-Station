@@ -11,6 +11,7 @@ import com.project.entity.Customer;
 import com.project.service.CustomerService;
 import com.project.service.PartsService;
 import com.project.service.ServiceReqService;
+import com.project.service.ServiceService;
 import com.project.service.VehicleService;
 
 enum ECustomerMenu {
@@ -165,7 +166,7 @@ public class SubMenu {
 				break;
 			case PROCESS_REQUEST:
 				if(vehicle_number!=null)
-				processRequestMain();
+				processRequestMain(vehicle_number);
 				else
 					System.out.println("First select the vehicle!!");
 				break;
@@ -175,7 +176,6 @@ public class SubMenu {
 			case GET_PAYMENT_FORM_CUSTOMER:
 				System.out.println("Get Payment Form Customer");
 				break;
-
 			default:
 				System.out.println("Wrong Choice");
 				break;
@@ -198,12 +198,17 @@ public class SubMenu {
 			return EProcessRequestMenu.values()[choice];
 	}
 
-	public static void processRequestMain() {
+	public static void processRequestMain(String vehicleNumber) {
 		EProcessRequestMenu choice;
 		while ((choice = processRequestMenu()) != EProcessRequestMenu.BACK) {
 			switch (choice) {
 			case NEW_SERVICE:
-				SubMenu.newServiceMain();
+				try {
+					SubMenu.newServiceMain(vehicleNumber);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				break;
 			case EXISTING_SERVICE:
 				SubMenu.existingServiceMain();
@@ -235,12 +240,15 @@ public class SubMenu {
 			return ENewService.values()[choice];
 	}
 
-	public static void newServiceMain() {
+	public static void newServiceMain(String vehicleNumber) throws SQLException {
 		ENewService choice;
 		while ((choice = newServiceMenu()) != ENewService.BACK) {
+			System.out.println("here");
+			System.out.println(choice);
 			switch (choice) {
 			case CREATE_NEW_SERVICE:
 				System.out.println("Creating new Services");
+				ServiceService.newService(vehicleNumber);
 				break;
 
 			default:
