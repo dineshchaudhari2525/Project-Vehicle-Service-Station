@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.project.entity.Maintainance;
+import com.project.entity.Oil;
+import com.project.entity.Service;
 import com.project.entity.ServiceRequest;
 import com.project.util.DBUtil;
 
@@ -29,7 +32,6 @@ public class ServiceDao implements AutoCloseable{
 			return service;
 		}
 		return null;
-		
 	
 	}
 	
@@ -44,6 +46,38 @@ public class ServiceDao implements AutoCloseable{
 		}
 		return serviceList;
 	} 
+	
+	public List<Service> serviceProvided(ServiceRequest serviceRequest) throws SQLException {
+		String sql="SELECT * FROM services WHERE service_request_id=?";
+		
+
+		PreparedStatement pst=this.connection.prepareStatement(sql);
+		pst.setInt(1, serviceRequest.getId());
+		ResultSet rs= pst.executeQuery();
+		serviceRequest.setServiceList(new ArrayList<>());
+		while(rs.next()) {
+			if(rs.getString("type").equals("maintainance")) {
+				Service maintainance=new Maintainance(rs.getInt("id"),
+						rs.getString("type"),
+						rs.getDouble("labour_charges"),
+						rs.getDouble("total_cost"),
+						rs.getString("remark"),
+						rs.getInt("service_request_id"));
+						
+				serviceRequest.getServiceList().add(maintainance);
+			}
+			else{
+				Service oil=new Oil(rs.getInt("id"),
+						rs.getString("type"),
+						rs.getDouble("labour_charges"),
+						rs.getDouble("total_cost"),
+						rs.getString("remark"));
+				
+				serviceRequest.getServiceList().add(oil);
+			}
+		}
+		return serviceRequest.getServiceList();
+	}
 
 	@Override
 	public void close() throws Exception {

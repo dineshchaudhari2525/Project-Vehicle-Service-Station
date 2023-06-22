@@ -3,6 +3,7 @@ package com.project.entity;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ServiceRequest {
 	private int id;
@@ -13,6 +14,12 @@ public class ServiceRequest {
 	
 	{
 		this.serviceList = new ArrayList<Service>();
+	}
+	public List<Service> getServiceList() {
+		return serviceList;
+	}
+	public void setServiceList(List<Service> serviceList) {
+		this.serviceList = serviceList;
 	}
 	public ServiceRequest() {
 		
@@ -29,6 +36,9 @@ public class ServiceRequest {
 		this.vehicle_number = vehicle_number;
 		this.request_date = request_date;
 		this.bill_amount = bill_amount;
+	}
+	public ServiceRequest(int id) {
+		this.id=id;
 	}
 	public int getId() {
 		return id;
@@ -59,7 +69,22 @@ public class ServiceRequest {
 		return "Service [id=" + id + ", vehicle_number=" + vehicle_number + ", request_date=" + request_date
 				+ ", bill_amount=" + bill_amount + "]";
 	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ServiceRequest other = (ServiceRequest) obj;
+		return id == other.id;
+	}
 	
-
+	
 	
 }

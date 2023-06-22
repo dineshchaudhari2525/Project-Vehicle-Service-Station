@@ -9,6 +9,7 @@ import java.util.Scanner;
 import com.project.dao.CustomerDao;
 import com.project.entity.Customer;
 import com.project.entity.ServiceRequest;
+import com.project.entity.SpecificCustomerVehicles;
 import com.project.service.CustomerService;
 import com.project.service.PartsService;
 import com.project.service.ServiceReqService;
@@ -78,14 +79,14 @@ public class SubMenu {
 			switch (choice) {
 			case ADD_CUSTOMER:
 				CustomerService.addCustomer();
-			
+
 				break;
 			case DISPLAY_ALL_CUSTOMER:
 				CustomerService.getAllCustomer();
-				
+
 				break;
 			case DISPLAY_SPECIFIC_CUSTOMER:
-			    System.out.println(CustomerService.getSpecificCustomer());	
+				System.out.println(CustomerService.getSpecificCustomer());
 				break;
 			case EDIT_CUSTOMER:
 				CustomerService.updateCustomer();
@@ -159,15 +160,15 @@ public class SubMenu {
 
 	public static void serviceMain() {
 		EServiceMenu choice;
-		String vehicle_number=null;
+		String vehicle_number = null;
 		while ((choice = serviceMenu()) != EServiceMenu.BACK) {
 			switch (choice) {
 			case SELECT_CUSTOMER_VEHICLE:
-				vehicle_number=ServiceReqService.selectCustomerVehilcle();
+				vehicle_number = ServiceReqService.selectCustomerVehilcle();
 				break;
 			case PROCESS_REQUEST:
-				if(vehicle_number!=null)
-				processRequestMain(vehicle_number);
+				if (vehicle_number != null)
+					processRequestMain(vehicle_number);
 				else
 					System.out.println("First select the vehicle!!");
 				break;
@@ -201,20 +202,26 @@ public class SubMenu {
 
 	public static void processRequestMain(String vehicleNumber) {
 		EProcessRequestMenu choice;
-		ServiceRequest serviceRequest=null;
+		ServiceRequest serviceRequest = null;
 		while ((choice = processRequestMenu()) != EProcessRequestMenu.BACK) {
 			switch (choice) {
 			case NEW_SERVICE:
 				try {
-					serviceRequest=ServiceService.newService(vehicleNumber);
+					serviceRequest = ServiceService.newService(vehicleNumber);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				break;
 			case EXISTING_SERVICE:
+				
 				try {
-				System.out.println(ServiceService.fetchTodaysServiceList());	
+					List<ServiceRequest> list=ServiceService.fetchTodaysServiceList();
+					System.out.println("Enter id to Service=> ");
+					int id = new Scanner(System.in).nextInt();
+					serviceRequest=list.get(list.indexOf(new ServiceRequest(id)));
+					System.out.println(serviceRequest);
+					System.out.println(ServiceService.serviceProvided(serviceRequest)); 
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

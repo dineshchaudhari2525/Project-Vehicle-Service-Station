@@ -10,6 +10,15 @@ public class Oil extends Service {
 		
 	}
 
+	public Oil(double oil_cost) {
+	this.oil_cost=oil_cost;
+	}
+
+	public Oil(int id, String type, double oil_cost, double total_cost, String remark) {
+		super(id,type,total_cost,remark);
+		this.oil_cost=oil_cost;
+	}
+
 	public double getOil_cost() {
 		return oil_cost;
 	}
@@ -29,5 +38,11 @@ public class Oil extends Service {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String toString() {
+		return super.toString()+"Oil [oil_cost=" + oil_cost + "]";
+	}
+	
 
 }

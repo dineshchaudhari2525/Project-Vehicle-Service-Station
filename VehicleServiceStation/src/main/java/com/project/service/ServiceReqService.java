@@ -14,6 +14,8 @@ import com.project.main.SubMenu;
 
 public class ServiceReqService {
 
+
+
 	public static String selectCustomerVehilcle() {
 
 		List<SpecificCustomerVehicles> vehicles=VehicleService.getSpecificVehicles();
@@ -25,7 +27,7 @@ public class ServiceReqService {
 		int choice = new Scanner(System.in).nextInt();
 		if (choice == 1) {
 		
-			System.out.println("Choose vehicle_number from the list ");
+			System.out.println("Choose vehicle index from the list ");
 			int vehicleSeq = new Scanner(System.in).nextInt();
 			
 			return vehicles.get(vehicleSeq-1).getVehicle_number();

@@ -2,10 +2,10 @@ package com.project.entity;
 
 public abstract class Service {
 	
-    protected int id;
-    protected String type;
-    protected double total_cost;
-    protected String remark;
+    private int id;
+    private String type;
+    private double total_cost;
+    private String remark;
     
     
     
@@ -20,6 +20,11 @@ public abstract class Service {
 		this.type = type;
 		this.total_cost = total_cost;
 		this.remark = remark;
+	}
+
+
+	public Service(String type) {
+		this.type=type;
 	}
 
 
@@ -54,6 +59,12 @@ public abstract class Service {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+	@Override
+	public String toString() {
+		return "Service [id=" + id + ", type=" + type + ", total_cost=" + total_cost + ", remark=" + remark + "]";
+	}
+
 
 	public abstract void acceptService() ;
 	
