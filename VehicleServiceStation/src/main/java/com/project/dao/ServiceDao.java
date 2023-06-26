@@ -49,8 +49,6 @@ public class ServiceDao implements AutoCloseable{
 	
 	public List<Service> serviceProvided(ServiceRequest serviceRequest) throws SQLException {
 		String sql="SELECT * FROM services WHERE service_request_id=?";
-		
-
 		PreparedStatement pst=this.connection.prepareStatement(sql);
 		pst.setInt(1, serviceRequest.getId());
 		ResultSet rs= pst.executeQuery();
@@ -69,14 +67,57 @@ public class ServiceDao implements AutoCloseable{
 			else{
 				Service oil=new Oil(rs.getInt("id"),
 						rs.getString("type"),
-						rs.getDouble("labour_charges"),
+						rs.getDouble("oil_cost"),
 						rs.getDouble("total_cost"),
-						rs.getString("remark"));
+						rs.getString("remark"),
+						rs.getInt("service_request_id"));
 				
 				serviceRequest.getServiceList().add(oil);
 			}
 		}
 		return serviceRequest.getServiceList();
+	}
+	
+	public void addService(Service service) throws SQLException {
+		String sql="INSERT INTO services(type,labour_charges,oil_cost,total_cost,remark,service_request_id) VALUES (?,?,?,?,?,?)";
+		PreparedStatement pst=this.connection.prepareStatement(sql);
+		if(service instanceof Maintainance) {
+			pst.setString(1, "maintainance");
+			pst.setDouble(2, ((Maintainance)service).getLabourCharges());
+			pst.setDouble(3, 0);
+			pst.setDouble(4, service.getTotal_cost());
+			pst.setString(5, service.getRemark());
+			pst.setInt(6, service.getService_request_id());
+			pst.executeUpdate();
+		}
+		else {
+			pst.setString(1, "oil");
+			pst.setDouble(3, ((Oil)service).getOil_cost());
+			pst.setDouble(2, 0);
+			pst.setDouble(4, service.getTotal_cost());
+			pst.setString(5, service.getRemark());
+			pst.setInt(6, service.getService_request_id());
+			pst.executeUpdate();
+		}
+		
+		
+		
+	}
+	public void updateServices(Service service) throws SQLException {
+		String sql="UPDATE services SET labour_charges=?,remark=?,total_cost=? WHERE id=? ";
+		System.out.println(service.getTotal_cost());
+		try(PreparedStatement pst=this.connection.prepareStatement(sql)){
+			if(service instanceof Maintainance) {
+				pst.setDouble(1, ((Maintainance)service).getLabourCharges());
+				pst.setString(2, service.getRemark());
+				System.out.println(((Maintainance)service).getTotal_cost());
+			
+				pst.setDouble(3, ((Maintainance)service).getTotal_cost());
+				pst.setInt(4,service.getId());
+				pst.executeUpdate();
+			}
+		}
+		
 	}
 
 	@Override
@@ -84,5 +125,7 @@ public class ServiceDao implements AutoCloseable{
 		
 		
 	}
+
+	
 
 }

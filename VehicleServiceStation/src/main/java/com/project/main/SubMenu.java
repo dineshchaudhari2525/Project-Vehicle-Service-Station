@@ -221,20 +221,40 @@ public class SubMenu {
 					int id = new Scanner(System.in).nextInt();
 					serviceRequest=list.get(list.indexOf(new ServiceRequest(id)));
 					System.out.println(serviceRequest);
-					System.out.println(ServiceService.serviceProvided(serviceRequest)); 
+					ServiceService.serviceProvided(serviceRequest); 
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				break;
 			case MAINTENANCE:
-				SubMenu.maintenanceRequirementMain();
+			    if(serviceRequest!=null)
+			    {
+			    	try {
+						ServiceService.doMaintainance(serviceRequest);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+			    }
+			    else {
+			    	System.out.println("First select service");
+			    }
 				break;
 			case REPAIRING:
 				SubMenu.repairingRequirementMain();
 				break;
 			case OIL_ADDITIVE_CHANGE:
-				SubMenu.oilAddRquirementMain();
+				 if(serviceRequest!=null)
+				    {
+				    	try {
+							ServiceService.addOil(serviceRequest);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+				    }
+				    else {
+				    	System.out.println("First select service");
+				    }
 				break;
 
 			default:
