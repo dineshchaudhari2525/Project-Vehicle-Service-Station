@@ -58,21 +58,22 @@ public class VehicleService {
 
 	}
 
-	public static void getAllVehicle() {
+	public static 	List<Vehicle>  getAllVehicle() {
 		List<Vehicle> vehicleList = new ArrayList<>();
 		try (VehicleDao vehicleDao = new VehicleDao()) {
 			vehicleDao.getAllVehicle(vehicleList);
 			for (Vehicle vehicle : vehicleList) {
 				System.out.println(vehicle);
 			}
+			return vehicleList;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		return null;
 	}
 
-	public static List<SpecificCustomerVehicles> getSpecificVehicles() {
-		Customer cust = CustomerService.getSpecificCustomer();
+	public static List<SpecificCustomerVehicles> getSpecificVehicles(Customer cust) {
+		
 		List<SpecificCustomerVehicles> vehicles=null;
 		try (VehicleDao vehicleDao = new VehicleDao()) {
 			 vehicles = vehicleDao.specificCustomerVehicles(cust.getId());
@@ -104,7 +105,8 @@ public class VehicleService {
 	}
 
 	public static void deleteVehicle() {
-		getSpecificVehicles();
+		Customer cust = CustomerService.getSpecificCustomer();
+		getSpecificVehicles(cust);
 		System.out.println("Enter Vehicle number to delete details: ");
 		String vehicle_number = new Scanner(System.in).next();
 		try {

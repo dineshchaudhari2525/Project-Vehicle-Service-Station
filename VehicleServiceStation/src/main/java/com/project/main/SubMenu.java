@@ -128,7 +128,8 @@ public class SubMenu {
 				VehicleService.getAllVehicle();
 				break;
 			case DISPLAY_SPECIFIC_VEHICLE:
-				VehicleService.getSpecificVehicles();
+				Customer cust = CustomerService.getSpecificCustomer();
+				VehicleService.getSpecificVehicles(cust);
 				break;
 			case EDIT_VEHICLE:
 				VehicleService.updateVehicle();
@@ -241,8 +242,15 @@ public class SubMenu {
 			    }
 				break;
 			case REPAIRING:
-				SubMenu.repairingRequirementMain();
-				break;
+				 if(serviceRequest!=null)
+				    {
+				    	try {
+							ServiceService.doRepairing(serviceRequest);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+				    }
+					break;
 			case OIL_ADDITIVE_CHANGE:
 				 if(serviceRequest!=null)
 				    {
