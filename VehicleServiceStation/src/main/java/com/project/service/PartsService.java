@@ -32,7 +32,7 @@ public class PartsService {
 		}
 		
 	}
-	public static void getAllParts() {
+	public static List<Parts> getAllParts() {
 		List<Parts>partsList=new ArrayList<>();
 		try (PartsDao partsDao = new PartsDao()) {
 			partsDao.getAllParts(partsList);
@@ -43,6 +43,7 @@ public class PartsService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return partsList;
 			
 		
 	}
@@ -75,4 +76,13 @@ public class PartsService {
 			e.printStackTrace();
 		}
 	}
+//	public static List<Parts> getSpecificParts() {
+//		Parts p=PartsService.getSpecificParts();
+//		List<Parts>parts=null;
+//		try(PartsDao partsDao=new PartsDao()){
+//			parts=partsDao.getSpecificParts(p.getId());
+//			
+//		}
+//		return null;
+//	}
 }

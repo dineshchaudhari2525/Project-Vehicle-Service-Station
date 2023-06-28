@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.project.entity.Parts;
@@ -61,6 +62,18 @@ private Connection connection;
 		this.connection.close();
 		
 	}
+	/*public List<Parts> getSpecificParts(int id) throws SQLException {
+		String sql="SELECT * FROM parts WHERE id=?";
+		try(PreparedStatement pst=this.connection.prepareStatement(sql)){
+			pst.setInt(1, id);
+			ResultSet rs= pst.executeQuery();
+			List<Parts>partsList=new ArrayList<>();
+			while(rs.next()) {
+				Parts parts=new Parts(rs.getInt("id"),rs.getString("name"),rs.getString("description"),rs.getDouble("price"));
+			}
+		}
+		return null;
+	}*/
 
 
 }

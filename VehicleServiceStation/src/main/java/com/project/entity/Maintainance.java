@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Maintainance extends Service {
 	private static final long serialversionUTD=1L;
 	private double labourCharges;
-	//private double parts_cost;
+	private double parts_cost;
 	private List<ServiceParts>partsList;
 	
 	public Maintainance() {
@@ -27,11 +27,11 @@ public class Maintainance extends Service {
        	this.labourCharges=labour_charges;			
 	}
 
-//	@Override
-//	public String toString() {
-//		return super.toString()+ "Maintainance [labourCharges=" + labourCharges + ", parts_cost=" + parts_cost + ", partsList="
-//				+ partsList + "]";
-//	}
+	@Override
+	public String toString() {
+		return super.toString()+ "Maintainance [labourCharges=" + labourCharges + ", parts_cost=" + parts_cost + ", partsList="
+				+ partsList + "]";
+	}
 	
 
 	public double getLabourCharges() {
@@ -42,13 +42,13 @@ public class Maintainance extends Service {
 		this.labourCharges = labourCharges;
 	}
 
-//	public double getParts_cost() {
-//		return parts_cost;
-//	}
-//
-//	public void setParts_cost(double parts_cost) {
-//		this.parts_cost = parts_cost;
-//	}
+	public double getParts_cost() {
+		return parts_cost;
+	}
+
+	public void setParts_cost(double parts_cost) {
+		this.parts_cost = parts_cost;
+	}
 
 	public List<ServiceParts> getPartsList() {
 		return partsList;
@@ -62,26 +62,22 @@ public class Maintainance extends Service {
 	@Override
 	public void acceptService() {
 		System.out.println("Enter labour charges: ");
-		labourCharges=new Scanner(System.in).nextDouble();
-		this.labourCharges=this.labourCharges+labourCharges;
+		this.labourCharges=new Scanner(System.in).nextDouble();
 		System.out.println("Enter Remark: ");
 		this.setRemark(new Scanner(System.in).next());
 		
 		calculateTotalCost();
-		
+	
 	}
 
 	@Override
 	public void calculateTotalCost() {
 	     
-		double total_cost=this.getTotal_cost()+this.labourCharges;
+		double total_cost=this.getTotal_cost()+this.labourCharges+this.parts_cost;
 		this.setTotal_cost(total_cost);
+		System.out.println(total_cost);
 	}
-	@Override
-	public String toString() {
-		return super.toString()+ "Maintainance [labourCharges=" + labourCharges  + ", partsList="
-				+ partsList + "]";
-	}
+
 
 	
 

@@ -17,8 +17,8 @@ public class ServiceReqService {
 
 
 	public static String selectCustomerVehilcle() {
-
-		List<SpecificCustomerVehicles> vehicles=VehicleService.getSpecificVehicles();
+		Customer cust = CustomerService.getSpecificCustomer();
+		List<SpecificCustomerVehicles> vehicles=VehicleService.getSpecificVehicles(cust);
 		for(int i=0;i<vehicles.size();i++)
 		{
 			System.out.println((i+1)+" "+vehicles.get(i));
@@ -33,10 +33,24 @@ public class ServiceReqService {
 			return vehicles.get(vehicleSeq-1).getVehicle_number();
 		} 
 		else {
-			System.out.println("Please again Enter 0 to go back and 1st Insert cutomer_vehicles");
-			return null;
+			
+			System.out.println("Enter vehicle number:");
+			String vehicleNumber=new Scanner(System.in).next();
+			List<Vehicle> vehiclesList=VehicleService.getAllVehicle();
+			System.out.println("Enter vehicle id:");
+			int vehicleId=new Scanner(System.in).nextInt();
+			CustomerVehicle customervehicle=new CustomerVehicle(vehicleNumber, cust.getId(), vehicleId);
+		
+			try(VehicleDao vehicleDao=new VehicleDao();) {
+				vehicleDao.customerVehicle(customervehicle);
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+			
 		}
-
+		return null;
 	}
 	
   

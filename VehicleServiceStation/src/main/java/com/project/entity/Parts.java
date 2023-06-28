@@ -1,5 +1,7 @@
 package com.project.entity;
 
+import java.util.Objects;
+
 public class Parts {
 	private int id;
 	private String name;
@@ -14,6 +16,9 @@ public class Parts {
 		this.name = name;
 		this.description = description;
 		this.price = price;
+	}
+	public Parts(int part_id) {
+		this.id=part_id;
 	}
 	public int getId() {
 		return id;
@@ -42,6 +47,21 @@ public class Parts {
 	@Override
 	public String toString() {
 		return "Parts [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Parts other = (Parts) obj;
+		return id == other.id;
 	}
 	
 	
