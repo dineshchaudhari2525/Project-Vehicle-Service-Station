@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.project.dao.CustomerDao;
+import com.project.entity.Bill;
 import com.project.entity.Customer;
 import com.project.entity.ServiceRequest;
 import com.project.entity.SpecificCustomerVehicles;
@@ -174,7 +175,8 @@ public class SubMenu {
 					System.out.println("First select the vehicle!!");
 				break;
 			case PREPARE_AND_DISPLAY_BILL:
-				System.out.println("Prepare and Display Bill");
+				Bill bill=new Bill();
+				bill.prepareBill();
 				break;
 			case GET_PAYMENT_FORM_CUSTOMER:
 				System.out.println("Get Payment Form Customer");

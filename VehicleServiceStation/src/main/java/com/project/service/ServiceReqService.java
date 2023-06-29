@@ -8,6 +8,7 @@ import com.project.dao.ServiceReqDao;
 import com.project.dao.VehicleDao;
 import com.project.entity.Customer;
 import com.project.entity.CustomerVehicle;
+import com.project.entity.ServiceRequest;
 import com.project.entity.SpecificCustomerVehicles;
 import com.project.entity.Vehicle;
 import com.project.main.SubMenu;
@@ -44,13 +45,17 @@ public class ServiceReqService {
 			try(VehicleDao vehicleDao=new VehicleDao();) {
 				vehicleDao.customerVehicle(customervehicle);
 			} catch (SQLException e) {
-				
 				e.printStackTrace();
 			}
 			
 			System.out.println("Please again Enter 0 to go back and 1st Insert cutomer_vehicles");
 		}
 		return null;
+	}
+
+	public static void addBill(double bill, int id, ServiceRequest serviceRequest) {
+		
+		
 	}
 	
   
