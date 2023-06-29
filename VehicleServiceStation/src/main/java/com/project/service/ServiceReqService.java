@@ -53,8 +53,10 @@ public class ServiceReqService {
 		return null;
 	}
 
-	public static void addBill(double bill, int id, ServiceRequest serviceRequest) {
-		
+	public static void addBill(double bill, int id, ServiceRequest serviceRequest) throws SQLException {
+		try(ServiceReqDao serviceReqDao=new ServiceReqDao()){
+			serviceReqDao.addBill(bill,id);
+		}
 		
 	}
 	

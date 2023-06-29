@@ -30,7 +30,9 @@ public class Bill {
                 			}
                 			System.out.println(bill);
                 			this.serviceRequest.setBill_amount(bill);
-                			//ServiceReqService.addBill(bill,this.serviceRequest.getId(),serviceRequest);
+                			ServiceReqService.addBill(bill,this.serviceRequest.getId(),serviceRequest);
+                		}else {
+                			System.out.println("Service does not exist");
                 		}
                 		
                 		

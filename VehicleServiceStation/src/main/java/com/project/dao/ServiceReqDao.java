@@ -27,5 +27,16 @@ private Connection connection;
 		this.connection.close();
 	}
 
+	public int addBill(double bill, int id) throws SQLException {
+	
+		String sql="UPDATE service_requests SET bill_amount=? WHERE id=?";
+		try(PreparedStatement addBill=this.connection.prepareStatement(sql)){
+			addBill.setDouble(1, bill);
+			addBill.setInt(2, id);
+			return addBill.executeUpdate();
+		}
+
+	}
+
 
 }
