@@ -88,7 +88,7 @@ public class ServiceService {
 		List<Service> serviceList = serviceRequest.getServiceList();
 		System.out.println(serviceList);
 		Oil service = null;
-		boolean serviceFound = false;
+		boolean serviceFound = false;   
 		if (serviceRequest.getServiceList().isEmpty()) {
 			service = new Oil();
 			service.acceptService();

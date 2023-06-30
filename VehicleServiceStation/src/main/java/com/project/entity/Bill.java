@@ -7,6 +7,7 @@ import java.util.Scanner;
 import com.project.dao.PartsDao;
 import com.project.service.ServiceReqService;
 import com.project.service.ServiceService;
+import com.project.service.VehicleService;
 
 public class Bill {
                 private Customer customer;
@@ -31,12 +32,19 @@ public class Bill {
                 			System.out.println(bill);
                 			this.serviceRequest.setBill_amount(bill);
                 			ServiceReqService.addBill(bill,this.serviceRequest.getId(),serviceRequest);
+                			fetchAllData();
                 		}else {
-                			System.out.println("Service does not exist");
+                			System.out.println("Service does not exists....");
                 		}
+                	}
+                	
+                	private void fetchAllData() {
+                		this.customerVehicle=VehicleService.getSpecificVehicles(this.serviceRequest.getVehicle_number());
                 		
                 		
-                	}catch(Exception e) {
+                	}
+                	
+                	catch(Exception e) {
                 		e.printStackTrace();
                 	}
                 }
